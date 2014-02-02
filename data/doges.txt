@@ -1,0 +1,10 @@
+# Doges courtesy of Mobify
+
+# Open a Pull Request, add your doge!
+
+http://localhost:5000/i/doges/hi-1.jpg
+http://localhost:5000/i/doges/happy-1.jpg
+http://localhost:5000/i/doges/birthday-1.png
+http://localhost:5000/i/doges/mmm-1.jpg
+http://localhost:5000/i/doges/rap-1.jpg
+http://localhost:5000/i/doges/scared-1.png

@@ -1,0 +1,25 @@
+.text {
+	z-index:0;
+	position:absolute;
+	font-family: "Comic Sans MS";
+
+	opacity: 0.8;
+}
+
+.overlay-box-shadow {
+	box-shadow: 0 0 30px 0 #fff;
+}
+
+.overlay-text-shadow {
+	text-shadow: 0 0 0 #fff;
+}
+
+.red { color:#ff0000; }
+.green { color:#00ff00; }
+.blue { color:#0000ff; }
+.yellow { color:#ffff00; }
+.magenta { color:#ff00ff; }
+.cyan { color:#00ffff; }
+.small { font-size: 22px; }
+.medium { font-size: 36px; }
+.big { font-size: 48px; }
