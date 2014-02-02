@@ -1,23 +1,25 @@
+window.Doge = {};
+
 function initDogeGenerator() {
-	window.Doge = {
-		generator: {
-			phrasesOnLoad: 1,
-			phrasesPerPage: 15 // TODO: base this on the window size. one per 400x200?
-		}
+	Doge.generator = {
+		phrasesOnLoad: 1,
+		phrasesPerPage: 15 // TODO: base this on the window size. one per 400x200?
 	};
 
 	var vars = {};
 	var hrefParts = window.location.href.split('?');
 	var phrases;
+
 	if(hrefParts[1]) {
 		$.each(hrefParts[1].split('&'), function(i, v) {
 			v = v.split('=');
 			vars[v[0]] = v[1];
 		});
 
-		phrases = decodeURIComponent(vars.w).replace(/\+/g, ' ').split(',');
-	} else {
-		phrases = [
+		Doge.generator.phrases = decodeURIComponent(vars.w).replace(/\+/g, ' ').split(',');
+	} 
+	else {
+		Doge.generator.phrases = [
 			"wow", 
 			"much cool", 
 			"lel", 
@@ -28,26 +30,25 @@ function initDogeGenerator() {
 			"such speed wow",
 			"do u even mobile?",
 			"doges > cats",
-			"it's all aboot the dogeamins",
+			"is all aboot the dogeamins, baby",
 			"so mystery",
 			"woof!"
 		];
 	}
 
-	Doge.generator.phrases = phrases;
-	Doge.generator.url = "";
-
 	Doge.generator.updatePhrases = function(phrases) {
 		Doge.generator.phrases = phrases.split(',');
 
 		var str;
+
 		for(var i = 0; i < Doge.generator.phrases.length; i++) {
-			// http://blog.stevenlevithan.com/archives/faster-trim-javascript
 			str = Doge.generator.phrases[i].replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+
 			if(str == '') {
 				Doge.generator.phrases.splice(i, 1);
 				i--;
-			} else {
+			} 
+			else {
 				Doge.generator.phrases[i] = str;
 			}
 		}
@@ -57,6 +58,7 @@ function initDogeGenerator() {
 
 	Doge.generator.resetWords = function() {
 		$('.text').remove();
+
 		for(var i = 0, l = Doge.generator.phrasesOnLoad; i < l; ++i) {
 			createText();
 		}
@@ -89,37 +91,62 @@ function initBackground() {
 
 	function createText() {
 		var text = $('.text');
+
 		if(text.length > Doge.generator.phrasesPerPage) {
-			text[0].remove();
+			text.first().fadeOut(200, function() {
+				$(this).remove();
+			});
 		}
 
 		var div = $('<div />').addClass('text');
-		div.addClass( sizes[Math.floor(Math.random() * sizes.length)] )
-		div.addClass( colors[Math.floor(Math.random() * sizes.length)] )
+
+		div.addClass(sizes[Math.floor(Math.random() * sizes.length)]);
+		div.addClass(colors[Math.floor(Math.random() * sizes.length)]);
 		div.html(getPhrase());
 		div.css('left', (Math.round(Math.random() * 100)) + "%");
 		div.css('top', (Math.round(Math.random() * 100)) + "%");
+
 		$('body').append(div);
+
+		div.fadeIn(200);
 	}
 
 	function getRandomDelay() {
 		return Math.floor(Math.random() * 2000) + 500; // between 500ms-2000ms
 	}
 
-	function randomText() {
-		createText();
-
-		setTimeout(randomText, getRandomDelay());
-	}
-
 	jQuery(function($) {
-		// create initial doges
-		for(var i = 0, l = Doge.generator.phrasesOnLoad; i < l; ++i) {
+		// generate doges on focus, and remove them on blur
+		var randomTextTimeout;
+
+		function randomText() {
 			createText();
+
+			randomTextTimeout = setTimeout(randomText, getRandomDelay());
 		}
 
-		// start random texting
-		setTimeout(randomText, getRandomDelay());
+		$('#id_url')
+			.bind('focus', function() {
+				$('body').addClass('x--woah');
+
+				// create initial doges
+				for(var i = 0, l = Doge.generator.phrasesOnLoad; i < l; ++i) {
+					createText();
+				}
+
+				// start random texting
+				randomTextTimeout = setTimeout(randomText, getRandomDelay());
+			})
+			.bind('blur', function() {
+				$('body').removeClass('x--woah');
+
+				$('.text').fadeOut(200, function() {
+					$(this).remove();
+				});
+
+				if(randomTextTimeout)
+					clearTimeout(randomTextTimeout);
+			});
 	});
 }
 

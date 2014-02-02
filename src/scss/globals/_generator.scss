@@ -1,7 +1,11 @@
 .text {
-	z-index:0;
-	position:absolute;
+	display: none;
+
+	position: absolute;
+	z-index: 0;
+
 	font-family: "Comic Sans MS";
+	white-space: nowrap;
 
 	opacity: 0.8;
 }

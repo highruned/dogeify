@@ -11,6 +11,7 @@ jQuery(function($) {
         var secure = protocol === "https";
 
         var newPath = "http://" + (secure ? "doges." : "doge.") + host + ".dogeifyit.com" + port + path;
+
         window.location = newPath;
     });
 
@@ -30,8 +31,14 @@ jQuery(function($) {
     });
 
     $('.suggestions ul li a').click(function() {
-        $('#id_url').val($(this).attr('href'));
+        $('#id_url')
+            .val($(this).attr('href'))
+            .focus();
 
         return false;
     });
+
+    // preload doge-go-woah
+    var woah = new Image();
+    woah.src = "i/doge-go-woah.png";
 });

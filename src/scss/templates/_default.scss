@@ -8,5 +8,9 @@ html.t-default {
 	body {
 		background: url(../i/doge-a-boo.png) no-repeat -50px -122px;
 		background-size: 300px auto;
+
+		&.x--woah {
+			background-image: url(../i/doge-go-woah.png);
+		}
 	}
 }
