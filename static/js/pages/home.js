@@ -15,7 +15,7 @@ jQuery(function($) {
         window.location = newPath;
     });
 
-    $('#id_url').on('keydown', function(e) {    
+    $('#destination').on('keydown', function(e) {    
         var keycode;    
 
         if (window.event) 
@@ -31,14 +31,14 @@ jQuery(function($) {
     });
 
     $('.suggestions ul li a').click(function() {
-        $('#id_url')
+        $('#destination')
             .val($(this).attr('href'))
             .focus();
 
         return false;
     });
 
-    // preload doge-go-woah
+    // preload doge-go-woah (shown on URL input focus)
     var woah = new Image();
     woah.src = "i/doge-go-woah.png";
 });

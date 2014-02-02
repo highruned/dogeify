@@ -125,7 +125,7 @@ function initBackground() {
 			randomTextTimeout = setTimeout(randomText, getRandomDelay());
 		}
 
-		$('#id_url')
+		$('#destination')
 			.bind('focus', function() {
 				$('body').addClass('x--woah');
 
