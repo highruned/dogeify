@@ -2,10 +2,16 @@ jQuery(function($) {
 	$('.js-toggle').click(function() {
 		var $target = $($(this).attr('href'));
 
-		if($target.is(':visible'))
+		if($target.is(':visible')) {
+			$('html').removeClass('x--woah');
+
 			$target.slideUp(150);
-		else
+		}
+		else {
+			$('html').addClass('x--woah');
+
 			$target.slideDown(150);
+		}
 
 		return false;
 	});
