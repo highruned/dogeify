@@ -9,8 +9,10 @@ html.t-default {
 		background: url(../i/doge-a-boo.png) no-repeat -50px -122px;
 		background-size: 300px auto;
 
-		&.x--woah {
-			background-image: url(../i/doge-go-woah.png);
-		}
+		overflow-x: hidden;
+	}
+
+	&.x--woah body {
+		background-image: url(../i/doge-go-woah.png);
 	}
 }

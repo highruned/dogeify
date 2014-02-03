@@ -5,8 +5,12 @@
 
         <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 
-        <link type="text/css" rel="stylesheet" href="css/extras/responsive-tables.css" media="screen" />
-        <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
+        <link href="i/icon.png" rel="icon" type="image/png" />
+        <link href="i/icon.png" rel="shortcut icon" />
+        <link href="i/icon.png" rel="apple-touch-icon-precomposed" />
+
+        <link href="css/extras/responsive-tables.css" type="text/css" rel="stylesheet" media="screen" />
+        <link href="css/stylesheet.css" type="text/css" rel="stylesheet" />
 
         <script type="text/javascript">
 
@@ -29,7 +33,7 @@
         <div id="wrapper" class="container-fluid">
             <h1 id="logo">Dogeify</h1>
 
-            <div class="row-fluid">
+            <div class="row-fluid main-action">
                 <div class="going-places span8 unfloat center">
                     <form action="" method="post" autocorrect="off" novalidate>
                         <div class="control-group ">
@@ -37,7 +41,7 @@
                             <button type="submit" class="btn btn-primary btn-large overlay-box-shadow">Dogeify It</button>
                         </div>
                     </form>
-                    <p class="notice overlay-box-shadow">test your <strong>shiba luck</strong>. each time is different. we hope you much enjoy.</p>
+                    <p class="notice overlay-box-shadow">test ur <strong>shiba luk</strong>. each time is diffent. hope u much enjoy!</p>
                 </div>
 
                 <div class="social-icons span6 unfloat">
@@ -45,116 +49,141 @@
                     <div class="fb-like" data-href="http://www.dogeifyit.com" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false" data-font="arial"></div>
                 </div>
 
-                <div class="coin-dispenser span6 unfloat">
+                <div class="coin-dispenser span8 unfloat">
                     <a href="#claim-form" class="btn btn-primary btn-large overlay-box-shadow js-toggle">Get Free Dogecoins</a>
                     <form id="claim-form" class="x-hide" action="/api/claim-coins/twitter/verify" method="post" autocorrect="off" novalidate>
-                        <h3><strong>step 1:</strong> share Dogeify on Twitter</h3>
-                        <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="dogeify">Tweet</a>
-
-                        <h3><strong>step 2:</strong> input ur Twitter username:</h3>
-                        <input type="text" placeholder="ur username" name="twitter_username" value="" />
-                        <p>somebooty refer u?</p>
-                        <input id="referrer" type="text" placeholder="ur referrer" name="referrer_username" value="" />
-
-                        <h3><strong>step 3:</strong> input ur Dogecoin address:</h3>
-                        <p>dontcha know how? u get <a href="http://dogecoin.com/">the Dogecoin wallet</a>!</p>
-                        <input type="text" placeholder="ur dogecoin address" name="dogecoin_address" value="" />
-
-                        <h3><strong>step 4:</strong> much profit</h3>
-                        <input type="submit" name="submit" value="verify" class="btn" />
+                        <ul class="steps">
+                            <li>
+                                <h3><strong>step 1:</strong> share Dogeify on Twitter</h3>
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="dogeify">Tweet</a>
+                            </li>
+                            <li>
+                                <h3><strong>step 2:</strong> input ur Twitter username</h3>
+                                <input id="twitterUsername" type="text" placeholder="ur @username" name="twitterUsername" value="" />
+                                <p>somebooty refer u? (optonal)</p>
+                                <input id="referrer" type="text" placeholder="referrer @username" name="referrerUsername" value="" />
+                            </li>
+                            <li>
+                                <h3><strong>step 3:</strong> input ur Dogecoin address</h3>
+                                <p class="how">doncha know how? u download <a href="http://dogecoin.com/">the Dogecoin wallet!</a></p>
+                                <input type="text" placeholder="ur dogecoin address" name="dogecoinAddress" value="" />
+                            </li>
+                            <li>
+                                <h3><strong>step 4:</strong> much profit</h3>
+                                <input type="submit" name="submit" value="Verify" class="btn" />
+                                <p class="status-message success">ur done. <a href="#top-doges">now try 2 beet the top doges!</a></p>
+                                <p class="status-message error">someting has gun wrong :( shiba sad. much tears. wow.</p>
+                            </li>
+                            <li>
+                                <h3><strong>optonal step 5:</strong> refer ur doges for more dogepoints</h3>
+                                <input id="referrerUrl" type="text" placeholder="ur referrer url" name="referrerUrl" value="" />
+                            </li>
+                        </ul>
                     </form>
                 </div>
             </div>
 
             <div class="row-fluid extras">
                 <div class="span5">
-                    <div class="top-sites overlay-text-shadow">
-                        <h3>so popular. much clicks. try them:</h3>
+                    <div class="top-sites overlay-box-shadow">
+                        <h3>so popular. much clicks. wow.</h3>
                         <table class="responsive list">
                             <thead>
                                 <tr>
-                                    <th>place</th>
+                                    <th width="1%">place</th>
                                     <th>url</th>
+                                    <th></th>
+                                    <th width="1%"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td class="url"><a href="http://www.ign.com:5000/">www.ign.com</a> very game.</td>
+                                    <td class="url"><a href="http://www.ign.com:5000/">www.ign.com</a></td>
+                                    <td>very game.</td>
+                                    <td><a class="btn btn-go" href="http://www.ign.com:5000/">Go</a></td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td class="url"><a href="http://www.cnn.com:5000/">www.cnn.com</a> wow news.</td>
+                                    <td class="url"><a href="http://www.cnn.com:5000/">www.cnn.com</a></td>
+                                    <td>wow news.</td>
+                                    <td><a class="btn btn-go" href="http://www.cnn.com:5000/">Go</a></td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td class="url"><a href="http://www.bbc.com:5000/">www.bbc.com</a> such british.</td>
+                                    <td class="url"><a href="http://www.bbc.com:5000/">www.bbc.com</a></td>
+                                    <td>such british.</td>
+                                    <td><a class="btn btn-go" href="http://www.bbc.com:5000/">Go</a></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="top-doges overlay-text-shadow">
+                    <div class="top-doges overlay-box-shadow">
+                        <a name="top-doges"></a>
                         <h3>top doges. such high. wow.</h3>
                         <table class="responsive list">
                             <thead>
                                 <tr>
-                                    <th>place</th>
+                                    <th width="1%">place</th>
                                     <th>name</th>
                                     <th>points</th>
+                                    <th width="1%"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td class="username"><a href="#">@ericmuyser</a></td>
+                                    <td class="username"><a href="http://twitter.com/ericmuyser">@ericmuyser</a></td>
                                     <td>
-                                        5 points (tweeted + 4 reffered)
+                                        5 points (tweeted + 4 referred)
                                     </td>
+                                    <td><a class="btn btn-go" href="http://twitter.com/ericmuyser" target="_blank">Stalk</a></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                    <p><em>doge algorithm. such classified. very advance.</em></p>
                 </div>
                 <div class="span7">
                     <div class="well overlay-box-shadow">
                         <h2>Aboot Dogeify</h2>
-                        <p class="explain">such technologies. so amaze. use <a href="http://www.mobify.com">Mobify</a>.</p>
+                        <p class="explain">such technologies. so amaze. use <a href="http://www.mobify.com" target="_blank">Mobify</a>.</p>
                         <div class="row-fluid">
                             <div class="span6">
-                                <h3><a href="http://www.mobify.com/mobifyjs/"><strong>Mobify.js:</strong></a> so adapt. such web.</h3>
-                                <p>we build teh platform for best web expeery ounce. shibas, join and grow much biznus in this new mobile world. the mobify revolootion <a href="http://www.mobify.com/customers/">has started</a>.</p>
+                                <h3><a href="http://www.mobify.com/mobifyjs/" target="_blank"><strong>Mobify.js:</strong></a> so adapt. such web.</h3>
+                                <p>we build teh platform for best web expeery ounces. shibas, join and grow much biznus in this new mobile world. the mobify revolootion <a href="http://www.mobify.com/customers/" target="_blank">has start!</a></p>
                             </div>
                             <div class="span6">
                                 <h3>wow. such innovashun.</h3>
                                 <p>we haz a number of cool projects for programmers to make teh web amaze.<p>
-                                <p>we're looking for passionate web ppl to help us. many <a href="http://www.mobify.com/about/jobs/">jobs</a>.</p>
+                                <p>we're looking for passionate web ppl to help us. many <a href="http://www.mobify.com/about/jobs/" target="_blank">jobs</a>.</p>
                                 <ul class="cool-projects">
                                     <li>
-                                        <a href="http://mobify.github.io/pikabu/"><strong>Pikabu.js</strong> for sidebars</a>
+                                        <a href="http://mobify.github.io/pikabu/" target="_blank"><strong>Pikabu.js</strong> for sidebars</a>
                                     </li>
                                     <li>
-                                        <a href="http://mobify.github.io/scooch/"><strong>Scooch.js</strong> for carousels</a>
+                                        <a href="http://mobify.github.io/scooch/" target="_blank"><strong>Scooch.js</strong> for carousels</a>
                                     </li>
                                     <li>
-                                        <a href="http://mobify.github.io/bellows/"><strong>Bellows.js</strong> for accordions</a>
+                                        <a href="http://mobify.github.io/bellows/" target="_blank"><strong>Bellows.js</strong> for accordions</a>
                                     </li>
                                     <li>
-                                        <a href="http://mobify.github.io/magnifik/"><strong>Magnifik.js</strong> for zoom images</a>
+                                        <a href="http://mobify.github.io/magnifik/" target="_blank"><strong>Magnifik.js</strong> for zoom images</a>
                                     </li>
                                 </ul>
                                 <h3>and very blog. much words.</h3>
                                 <ul class="much-blog">
                                     <li>
-                                        <a href="http://www.mobify.com/insights/design-upgrades-to-increase-mobile-revenue/">25 Top Design Upgrades to Make Your Mobile Revenue Skyrocket</a>
+                                        <a href="http://www.mobify.com/insights/design-upgrades-to-increase-mobile-revenue/" target="_blank">25 Top Design Upgrades to Make Your Mobile Revenue Skyrocket</a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <p class="notice overlay-box-shadow">
-                        it's easy to use. just add <strong>.dogeifyit.com</strong> after the website domain. like dis:
+                        it's easy to use. just add <span>.dogeifyit.com</span> after the website domain. like dis:
                         <br />
-                        <a href="http://www.cnn.com.dogeifyit.com/"><strong>www.cnn.com.dogeifyit.com</strong></a>
+                        <a href="http://www.cnn.com.dogeifyit.com/" target="_blank"><strong>www.cnn.com &#8594; www.cnn.com.dogeifyit.com</strong></a>
                     </p>
                 </div>
             </div>
@@ -182,13 +211,15 @@
                 </em>
             </p>
 
-            <div id="tip" class="span8 unfloat center">
-                github <a href="http://github.com/ericmuyser/dogeify">source code</a>. many green lines. so matrix.
-                <br />
-                wow <a href="https://twitter.com/ericmuyser">@ericmuyser</a>. such creation. 
-                <br />
-                appreciate <a href="#doge-address" class="js-toggle">dogecoin tips</a>.
-                <div id="doge-address">dogecoin tip address: <a href="http://dogechain.info/address/DKdTDQNpCHttwkA5pBGFrg61Xv7smbT9bi">DKdTDQNpCHttwkA5pBGFrg61Xv7smbT9bi</a></a>
+            <div id="tip" class="row-fluid">
+                <div class="span8 unfloat center">
+                    github <a href="http://github.com/ericmuyser/dogeify">source code</a>. many green lines. so matrix.
+                    <br />
+                    wow <a href="https://twitter.com/ericmuyser">@ericmuyser</a>. such creation. 
+                    <br />
+                    appreciate <a href="#doge-address" class="js-toggle">dogecoin tips</a>.
+                    <div id="doge-address">dogecoin tip address: <a href="http://dogechain.info/address/DKdTDQNpCHttwkA5pBGFrg61Xv7smbT9bi">DKdTDQNpCHttwkA5pBGFrg61Xv7smbT9bi</a></a>
+                </div>
             </div>
         </div>
 

@@ -1,7 +1,9 @@
 function initDogeGenerator() {
 	Doge.generator = {
-		phrasesOnLoad: 1,
-		phrasesPerPage: 15 // TODO: base this on the window size. one per 400x200?
+		phrasesOnLoad: 0,
+		phrasesPerPage: 5, // TODO: base this on the window size. one per 400x200?
+		phraseDelayMin: 300,
+		phraseDelayMax: 1000
 	};
 
 	var params = Doge.helpers.getHashParameters();
@@ -19,9 +21,11 @@ function initDogeGenerator() {
 			"diggity doge doge", 
 			"srs web", 
 			"such speed wow",
-			"do u even mobile?",
+			"do u even mobile, doge?",
 			"doges > cats",
+			"so web scale",
 			"is all aboot the dogeamins, baby",
+			"dogeammed with luv",
 			"so mystery",
 			"woof!"
 		];
@@ -95,8 +99,8 @@ function initBackground() {
 			.addClass(sizes[getRandom(0, sizes.length)])
 			.addClass(colors[getRandom(0, sizes.length)])
 			.html(getPhrase())
-			.css('left', getRandom(20, 80) + "%")
-			.css('top', getRandom(20, 80) + "%")
+			.css('left', getRandom(0, 80) + "%")
+			.css('top', getRandom(0, 80) + "%")
 			.appendTo('body')
 			.fadeIn(200);
 	}
@@ -112,12 +116,14 @@ function initBackground() {
 		function randomText() {
 			createText();
 
-			randomTextTimeout = setTimeout(randomText, getRandomDelay());
+			randomTextTimeout = setTimeout(randomText, getRandom(Doge.generator.phraseDelayMin, Doge.generator.phraseDelayMax));
 		}
 
 		$('#destination')
 			.bind('focus', function() {
-				$('body').addClass('x--woah');
+				$('html').addClass('x--woah');
+
+				$('.going-places > .notice').fadeIn(300);
 
 				// create initial doges
 				for(var i = 0, l = Doge.generator.phrasesOnLoad; i < l; ++i) {
@@ -125,10 +131,12 @@ function initBackground() {
 				}
 
 				// start random texting
-				randomTextTimeout = setTimeout(randomText, getRandom(500, 2000)); // between 500ms-2000ms
+				randomTextTimeout = setTimeout(randomText, getRandom(Doge.generator.phraseDelayMin, Doge.generator.phraseDelayMax)); // between 500ms-2000ms
 			})
 			.bind('blur', function() {
-				$('body').removeClass('x--woah');
+				$('html').removeClass('x--woah');
+
+				$('.going-places > .notice').fadeOut(200);
 
 				$('.text').fadeOut(200, function() {
 					$(this).remove();

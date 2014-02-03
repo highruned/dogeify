@@ -1,11 +1,7 @@
 table.list {
-	@include border-radius(3px);
 	width: 100%;
 
-	border-bottom: 2px solid #eee;
 	font-size: 15px;
-
-	overflow: hidden;
 
 	th {
 		background-color: #2e7bcc;
@@ -27,19 +23,12 @@ table.list {
 			list-style: square;
 		}
 
-		&.last.actions {
-			text-align: right;
+		&:first-child {
+			border-left: 2px solid #eee;
 		}
 
-		&.has-ribbon {
-			.title {
-				margin-top: 15px;
-			}
-
-			.ribbon-widget {
-				left: 0;
-				top: -2px;
-			}
+		&:last-child {
+			border-right: 2px solid #eee;
 		}
 	}
 

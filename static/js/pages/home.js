@@ -30,21 +30,29 @@ jQuery(function($) {
         }
     });
 
-    $('.top-sites ul li a').click(function() {
+    $('.top-sites a').click(function() {
         $('#destination')
             .val($(this).attr('href'))
             .focus();
 
+        $(window).scroll($('#destination').offset().top);
+
         return false;
     });
 
-    var referrer = window.location.hash;
 
-    if(referrer) {
-        $('#referrer').val(referrer);
+    var params = Doge.helpers.getHashParameters();
+
+    if(params['referrer']) {
+        $('#referrer').val('@' + params['referrer']);
     }
 
+    $('#twitterUsername').keyup(function() {
+        var twitterUsername = $(this).val().replace('@', '');
+
+        $('#referrerUrl').val('http://dogeifyit.com/#referrer=' + twitterUsername);
+    });
+
     // preload doge-go-woah (shown on URL input focus)
-    var woah = new Image();
-    woah.src = "i/doge-go-woah.png";
+    $('<img />').attr('src', "i/doge-go-woah.png").hide().appendTo('body');
 });
