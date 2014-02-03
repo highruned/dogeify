@@ -5,7 +5,8 @@
 
         <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 
-        <link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
+        <link type="text/css" rel="stylesheet" href="css/extras/responsive-tables.css" media="screen" />
+        <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
 
         <script type="text/javascript">
 
@@ -24,19 +25,12 @@
     <body class="min preview">
 
         <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
             
         <div id="wrapper" class="container-fluid">
             <h1 id="logo">Dogeify</h1>
 
             <div class="row-fluid">
-                <div class="going-places span8">
+                <div class="going-places span8 unfloat center">
                     <form action="" method="post" autocorrect="off" novalidate>
                         <div class="control-group ">
                             <input type="url" name="url" id="destination" class="overlay-box-shadow" placeholder="Enter site address..." />
@@ -46,26 +40,79 @@
                     <p class="notice overlay-box-shadow">test your <strong>shiba luck</strong>. each time is different. we hope you much enjoy.</p>
                 </div>
 
-                <div class="social-icons span6">
+                <div class="social-icons span6 unfloat">
                     <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="dogeify">Tweet</a>
-                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                     <div class="fb-like" data-href="http://www.dogeifyit.com" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false" data-font="arial"></div>
                 </div>
 
-                <div class="coin-dispenser span6">
-                    <button class="btn btn-primary btn-large overlay-box-shadow">Get Free Dogecoins</button>
+                <div class="coin-dispenser span6 unfloat">
+                    <a href="#claim-form" class="btn btn-primary btn-large overlay-box-shadow js-toggle">Get Free Dogecoins</a>
+                    <form id="claim-form" class="x-hide" action="/api/claim-coins/twitter/verify" method="post" autocorrect="off" novalidate>
+                        <h3><strong>step 1:</strong> share Dogeify on Twitter</h3>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="dogeify">Tweet</a>
+
+                        <h3><strong>step 2:</strong> input ur Twitter username:</h3>
+                        <input type="text" placeholder="ur username" name="twitter_username" value="" />
+                        <p>somebooty refer u?</p>
+                        <input id="referrer" type="text" placeholder="ur referrer" name="referrer_username" value="" />
+
+                        <h3><strong>step 3:</strong> input ur Dogecoin address:</h3>
+                        <p>dontcha know how? u get <a href="http://dogecoin.com/">the Dogecoin wallet</a>!</p>
+                        <input type="text" placeholder="ur dogecoin address" name="dogecoin_address" value="" />
+
+                        <h3><strong>step 4:</strong> much profit</h3>
+                        <input type="submit" name="submit" value="verify" class="btn" />
+                    </form>
                 </div>
             </div>
 
             <div class="row-fluid extras">
                 <div class="span5">
-                    <div class="suggestions overlay-text-shadow">
+                    <div class="top-sites overlay-text-shadow">
                         <h3>so popular. much clicks. try them:</h3>
-                        <ul>
-                            <li><a href="http://www.ign.com:5000/">ign. very game.</a></li>
-                            <li><a href="http://www.cnn.com/">cnn. wow news.</a></li>
-                            <li><a href="http://www.bbc.com/">bbc. such british.</a></li>
-                        </ul>
+                        <table class="responsive list">
+                            <thead>
+                                <tr>
+                                    <th>place</th>
+                                    <th>url</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td class="url"><a href="http://www.ign.com:5000/">www.ign.com</a> very game.</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td class="url"><a href="http://www.cnn.com:5000/">www.cnn.com</a> wow news.</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td class="url"><a href="http://www.bbc.com:5000/">www.bbc.com</a> such british.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="top-doges overlay-text-shadow">
+                        <h3>top doges. such high. wow.</h3>
+                        <table class="responsive list">
+                            <thead>
+                                <tr>
+                                    <th>place</th>
+                                    <th>name</th>
+                                    <th>points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td class="username"><a href="#">@ericmuyser</a></td>
+                                    <td>
+                                        5 points (tweeted + 4 reffered)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="span7">
@@ -75,7 +122,7 @@
                         <div class="row-fluid">
                             <div class="span6">
                                 <h3><a href="http://www.mobify.com/mobifyjs/"><strong>Mobify.js:</strong></a> so adapt. such web.</h3>
-                                <p>we build teh <a href="http://www.mobify.com/mobifyjs/">platform</a> for best web expeerunce. shibas, join and grow much biznus in this new mobile world. the mobify revolootion <a href="http://www.mobify.com/customers/">has started</a>.</p>
+                                <p>we build teh platform for best web expeery ounce. shibas, join and grow much biznus in this new mobile world. the mobify revolootion <a href="http://www.mobify.com/customers/">has started</a>.</p>
                             </div>
                             <div class="span6">
                                 <h3>wow. such innovashun.</h3>
@@ -135,17 +182,29 @@
                 </em>
             </p>
 
-            <div id="tip">
+            <div id="tip" class="span8 unfloat center">
                 github <a href="http://github.com/ericmuyser/dogeify">source code</a>. many green lines. so matrix.
                 <br />
                 wow <a href="https://twitter.com/ericmuyser">@ericmuyser</a>. such creation. 
                 <br />
                 appreciate <a href="#doge-address" class="js-toggle">dogecoin tips</a>.
-                <div id="doge-address">dogecoin tip address: DKdTDQNpCHttwkA5pBGFrg61Xv7smbT9bi</a>
+                <div id="doge-address">dogecoin tip address: <a href="http://dogechain.info/address/DKdTDQNpCHttwkA5pBGFrg61Xv7smbT9bi">DKdTDQNpCHttwkA5pBGFrg61Xv7smbT9bi</a></a>
             </div>
         </div>
 
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="js/extras/responsive-tables.js"></script>
+        <script src="js/global/doge.js"></script>
+        <script src="js/global/helpers.js"></script>
         <script src="js/global/toggle.js"></script>
         <script src="js/global/generator.js"></script>
         <script src="js/pages/home.js"></script>

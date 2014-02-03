@@ -1,0 +1,55 @@
+table.list {
+	@include border-radius(3px);
+	width: 100%;
+
+	border-bottom: 2px solid #eee;
+	font-size: 15px;
+
+	overflow: hidden;
+
+	th {
+		background-color: #2e7bcc;
+		color: #FFF;
+		font-weight: normal;
+		padding: 7px;
+
+		&:hover, &.active {
+			background-color: #296db5;
+		}
+	}
+
+	td {
+		border: 0 none;
+		border-bottom: 2px solid #eee;
+		color: #666;
+
+		ul {
+			list-style: square;
+		}
+
+		&.last.actions {
+			text-align: right;
+		}
+
+		&.has-ribbon {
+			.title {
+				margin-top: 15px;
+			}
+
+			.ribbon-widget {
+				left: 0;
+				top: -2px;
+			}
+		}
+	}
+
+	tr {
+		&.featured td {
+			background: #f9f8d7;
+		}
+
+		&:hover, &.active {
+			background: #f9f8d7;
+		}
+	}
+}

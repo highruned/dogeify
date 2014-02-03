@@ -30,13 +30,19 @@ jQuery(function($) {
         }
     });
 
-    $('.suggestions ul li a').click(function() {
+    $('.top-sites ul li a').click(function() {
         $('#destination')
             .val($(this).attr('href'))
             .focus();
 
         return false;
     });
+
+    var referrer = window.location.hash;
+
+    if(referrer) {
+        $('#referrer').val(referrer);
+    }
 
     // preload doge-go-woah (shown on URL input focus)
     var woah = new Image();

@@ -23,9 +23,6 @@ body {
 }
 
 .going-places {
-    margin: 0 auto !important;
-    float: none !important;
-
     button {
         width: 25%;
         margin-left: 5%;
@@ -53,13 +50,12 @@ body {
 }
 
 .social-icons {
-    margin: 40px auto !important;
-    float: none !important;
+    margin: 40px auto 0 !important;
 }
 
 .coin-dispenser {
-    margin: 20px auto !important;
-    float: none !important;
+
+    margin: 20px auto 0 !important;
 }
 
 .explain {
@@ -81,8 +77,39 @@ body {
     margin: 60px 0 30px 0;
 }
 
-.suggestions {
-    padding: 10px 20% 0 0;
+#doge-address {
+    @include border-radius(3px);
+
+    background: #ccc;
+    padding: 5px;
+    border: 2px solid #999;
+
+    margin-top: 10px !important;
+}
+
+.x-hide {
+    display: none;
+}
+
+.unfloat {
+    float: none !important;
+}
+
+.center {
+    margin: 0 auto !important;
+}
+
+#claim-form {
+    @include border-radius(3px);
+
+    padding: 20px;
+    margin-top: 20px;
+
+    border: 2px dashed #ccc;
+}
+
+.top-sites {
+    padding: 10px 20px 20px 0;
     margin-bottom: 20px;
 
     ul {
@@ -101,8 +128,25 @@ body {
     }
 
     h3 {
-        width: 60%;
         margin: 0 auto 0.5em auto;
+        font-weight: bold;
+    }
+
+    td.url a {
+        font-weight: bold;
+    }
+}
+
+.top-doges {
+    padding: 10px 20px 20px 0;
+    margin-bottom: 20px;
+
+    h3 {
+        margin: 0 auto 0.5em auto;
+        font-weight: bold;
+    }
+
+    td.username a {
         font-weight: bold;
     }
 }
@@ -204,14 +248,6 @@ h2 {
     #wrapper {
         padding: 20px;
     }
-    
-    .suggestions {
-        padding: 0;
-
-        h3 {
-            width: auto;
-        }
-    }
 
     .going-places {
         min-width: 570px;
@@ -225,6 +261,14 @@ h2 {
 @media only screen and (max-width: 640px) {
     #wrapper {
         padding: 5px;
+    }
+    
+    .top-sites, .top-doges {
+        padding: 0;
+
+        h3 {
+            width: auto;
+        }
     }
     
     body {

@@ -1,22 +1,13 @@
-window.Doge = {};
-
 function initDogeGenerator() {
 	Doge.generator = {
 		phrasesOnLoad: 1,
 		phrasesPerPage: 15 // TODO: base this on the window size. one per 400x200?
 	};
 
-	var vars = {};
-	var hrefParts = window.location.href.split('?');
-	var phrases;
+	var params = Doge.helpers.getHashParameters();
 
-	if(hrefParts[1]) {
-		$.each(hrefParts[1].split('&'), function(i, v) {
-			v = v.split('=');
-			vars[v[0]] = v[1];
-		});
-
-		Doge.generator.phrases = decodeURIComponent(vars.w).replace(/\+/g, ' ').split(',');
+	if(params['phrases']) {
+		Doge.generator.phrases = encodeURIComponent(params['phrases']).split('%2C');
 	} 
 	else {
 		Doge.generator.phrases = [
@@ -39,10 +30,8 @@ function initDogeGenerator() {
 	Doge.generator.updatePhrases = function(phrases) {
 		Doge.generator.phrases = phrases.split(',');
 
-		var str;
-
 		for(var i = 0; i < Doge.generator.phrases.length; i++) {
-			str = Doge.generator.phrases[i].replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+			var str = Doge.generator.phrases[i].replace(/^\s\s*/, '').replace(/\s\s*$/, '');
 
 			if(str == '') {
 				Doge.generator.phrases.splice(i, 1);
@@ -75,6 +64,9 @@ function initBackground() {
 		if(!Doge.generator.phrases.length) { 
 			return "wow"; 
 		}
+		else if(Doge.generator.phrases.length === 1) {
+			return Doge.generator.phrases[0];
+		}
 
 		var newPhrase = currentPhrase;
 
@@ -98,21 +90,19 @@ function initBackground() {
 			});
 		}
 
-		var div = $('<div />').addClass('text');
-
-		div.addClass(sizes[Math.floor(Math.random() * sizes.length)]);
-		div.addClass(colors[Math.floor(Math.random() * sizes.length)]);
-		div.html(getPhrase());
-		div.css('left', (Math.round(Math.random() * 100)) + "%");
-		div.css('top', (Math.round(Math.random() * 100)) + "%");
-
-		$('body').append(div);
-
-		div.fadeIn(200);
+		var div = $('<div></div>')
+			.addClass('text')
+			.addClass(sizes[getRandom(0, sizes.length)])
+			.addClass(colors[getRandom(0, sizes.length)])
+			.html(getPhrase())
+			.css('left', getRandom(20, 80) + "%")
+			.css('top', getRandom(20, 80) + "%")
+			.appendTo('body')
+			.fadeIn(200);
 	}
 
-	function getRandomDelay() {
-		return Math.floor(Math.random() * 2000) + 500; // between 500ms-2000ms
+	function getRandom(min, max) {
+		return Math.floor(Math.random() * max) + min; 
 	}
 
 	jQuery(function($) {
@@ -135,7 +125,7 @@ function initBackground() {
 				}
 
 				// start random texting
-				randomTextTimeout = setTimeout(randomText, getRandomDelay());
+				randomTextTimeout = setTimeout(randomText, getRandom(500, 2000)); // between 500ms-2000ms
 			})
 			.bind('blur', function() {
 				$('body').removeClass('x--woah');
