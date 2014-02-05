@@ -12,9 +12,9 @@
 
     for (_i = 0, _len = HOST_HEADERS.length; _i < _len; _i++) {
       header = HOST_HEADERS[_i];
-      
-      if (header in req.headers) {
-        req.headers[header] = removeHost(req.headers[header]);
+
+      if (header in req.headers) {console.log('h', req.headers[header], req.secure);
+        req.headers[header] = removeHost(req.headers[header], {secure: req.secure});
       }
     }
 
@@ -24,9 +24,16 @@
       header = URL_HEADERS[_j];
 
       if (header in req.headers) {
+        /* we don't need this do we? it's trying to transform twice
+
         _results.push(req.headers[header] = removeHost(req.headers[header], {
-          url: true
+          url: true,
+          secure: req.secure
         }));
+        */
+
+        // using this instead:
+        _results.push(req.headers[header]);
       } 
       else {
         _results.push(void 0);
@@ -59,7 +66,7 @@
           });
         }
       }
-
+console.log(headers);
       if ('access-control-allow-origin' in headers) {
         access_control_allow_origin = headers['access-control-allow-origin'].trim();
 
@@ -85,6 +92,7 @@
                 port: false
               }));
             });
+
             _results.push(cookie.replace(/Secure/i, ""));
           }
 
@@ -95,10 +103,10 @@
       }
 
       if (reason) {
-        return writeHead.call(res, statusCode, reason, headers);
+        writeHead.call(res, statusCode, reason, headers);
       } 
       else {
-        return writeHead.call(res, statusCode, headers);
+        writeHead.call(res, statusCode, headers);
       }
     };
   };
