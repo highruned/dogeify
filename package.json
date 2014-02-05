@@ -4,7 +4,7 @@
   "description": "Injects Doges in to Pages",
   "version": "0.0.1",
   "homepage": "https://www.dogeifyit.com/",
-  "main": "lib/main.js",
+  "main": "lib/dogeify.js",
   "dependencies": {
     "htmlparser": "git+https://github.com/mobify/node-htmlparser.git#v1.x",
     "request": "~2.9.202",
