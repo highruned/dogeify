@@ -8,6 +8,7 @@
 
   captureResponse = function (res, onEndHeader) {
     var buffer, end, headersWritten, newRes, setHeader, write, writeHead;
+
     write = res.write;
     end = res.end;
     writeHead = res.writeHead;
@@ -16,6 +17,7 @@
     res.headers = {};
     buffer = new BufferStream();
     headersWritten = false;
+
     res.write = function (data, encoding) {
       buffer.write(data, encoding);
       if (!headersWritten && onEndHeader) {
@@ -23,6 +25,7 @@
         return onEndHeader(res.statusCode, res.reason, res.headers);
       }
     };
+
     res.end = function (data, encoding) {
       buffer.end(data, encoding);
       if (!headersWritten && onEndHeader) {
@@ -30,6 +33,7 @@
         return onEndHeader(res.statusCode, res.reason, res.headers);
       }
     };
+
     res.writeHead = function () {
       var statusCode, _headers, _i, _reason, _statusCode;
       _statusCode = arguments[0], _reason = 3 <= arguments.length ? __slice.call(arguments, 1, _i = arguments.length - 1) : (_i = 1, []), _headers = arguments[_i++];
@@ -42,12 +46,15 @@
         return onEndHeader(res.statusCode, res.reason, res.headers);
       }
     };
+
     res.setHeader = function (header, value) {
       return res.headers[header] = value;
     };
+
     res.on("close", function () {
       return buffer.destroy();
     });
+
     newRes = {
       write: function (data, encoding) {
         return write.call(res, data, encoding);
@@ -69,6 +76,7 @@
         return this.emit("close");
       }
     };
+    
     return [buffer, newRes];
   };
 

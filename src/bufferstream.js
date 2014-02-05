@@ -12,6 +12,7 @@
       ctor.prototype = parent.prototype;
       child.prototype = new ctor;
       child.__super__ = parent.prototype;
+
       return child;
     };
 
@@ -34,7 +35,7 @@
       - You can `pause` a BufferStream and collect data for later.
   */
 
-  DEBUG = process.env["DEBUG"];
+  DEBUG = process.env['DEBUG'];
 
   BufferStream = (function (_super) {
     var MAX_BUFFER_SIZE, MIN_BUFFER_SIZE;
@@ -69,21 +70,28 @@
     BufferStream.prototype.ensureSpace = function (bytes) {
       var bytesAvailable, currentSize, desiredSize, newBuffer, targetSize;
       bytesAvailable = this.buffer.length - this.writeIndex;
-      if (bytesAvailable >= bytes) return;
+
+      if (bytesAvailable >= bytes) 
+        return;
+
       currentSize = this.writeIndex - this.readIndex;
       desiredSize = currentSize + bytes;
       targetSize = MIN_BUFFER_SIZE;
+
       while (targetSize < desiredSize) {
         targetSize *= 2;
       }
+
       if (DEBUG) {
         console.log("Resizing buffer from " + this.buffer.length + " to " + targetSize);
       }
+
       newBuffer = new Buffer(targetSize);
       this.buffer.copy(newBuffer, 0, this.readIndex, this.writeIndex);
       this.writeIndex = this.writeIndex - this.readIndex;
       this.readIndex = 0;
       this.buffer = newBuffer;
+
       return true;
     };
 
@@ -95,29 +103,40 @@
       this.ensureSpace(buffer.length);
       buffer.copy(this.buffer, this.writeIndex);
       this.writeIndex = this.writeIndex + buffer.length;
+
       return true;
     };
 
     BufferStream.prototype._writeString = function (string) {
       var bytes;
+
       bytes = Buffer.byteLength(string, this.encoding);
       this.ensureSpace(bytes);
       this.buffer.write(string, this.writeIndex, bytes, this.encoding);
       this.writeIndex = this.writeIndex + bytes;
+
       return true;
     };
 
     BufferStream.prototype._readBuffer = function (maxBytes) {
       var buffer;
-      if (maxBytes == null) maxBytes = 0;
+
+      if (maxBytes == null) 
+        maxBytes = 0;
+
       if (maxBytes === 0) {
         this.targetIndex = this.writeIndex;
-      } else {
+      } 
+      else {
         this.targetIndex = this.readIndex + maxBytes;
       }
-      if (this.targetIndex > this.writeIndex) this.targetIndex = this.writeIndex;
+
+      if (this.targetIndex > this.writeIndex) 
+        this.targetIndex = this.writeIndex;
+
       buffer = this.buffer.slice(this.readIndex, this.targetIndex);
       this.readIndex = this.targetIndex;
+
       return buffer;
     };
 
@@ -133,37 +152,46 @@
       if (encoding !== 'utf8') {
         throw new Error("Only UTF8 is a supported encoding");
       }
+
       throw new Error("Not Implemented.");
+
       this.encoding = encoding;
-      return this.emitStrings = true;
+
+      this.emitStrings = true;
     };
 
     BufferStream.prototype.pause = function () {
-      return this.paused = true;
+      this.paused = true;
     };
 
     BufferStream.prototype.resume = function () {
       this.paused = false;
-      return this.flush();
+
+      this.flush();
     };
 
     BufferStream.prototype._flush = function () {
       var empty;
+
       if (this.paused || this._destroyed) return;
+
       this._emitData(this._endWrite || this._destroySoon);
       empty = !this._getLength();
+
       if (empty && this._endWrite) this._emitEnd();
       if (empty && this._endWrite && this._destroySoon) return this.destroy();
     };
 
     BufferStream.prototype._emitData = function (force) {
       var bytesRemaining, data;
+
       if (force == null) force = false;
+
       bytesRemaining = this._getLength();
       if ((bytesRemaining >= MIN_BUFFER_SIZE) || force) {
         data = this._readBuffer(MAX_BUFFER_SIZE);
         if (data.length) this.emit("data", data);
-        return this.flush();
+        this.flush();
       }
     };
 
@@ -171,7 +199,7 @@
       this.readable = false;
       this._endRead = true;
       this.emit("end");
-      return this.destroy();
+      this.destroy();
     };
 
     /*
@@ -184,19 +212,26 @@
       if (this._endWrite || this._destroyed) {
         throw new Error("Cannot write to stream, has been ended or destroyed.");
       }
+
       if (Buffer.isBuffer(data)) {
         this._writeBuffer(data);
-      } else {
+      } 
+      else {
         this._writeString(data, encoding);
       }
+
       this.flush();
+
       return true;
     };
 
     BufferStream.prototype.end = function (data, encoding) {
-      if (data != null) this.write(data, encoding);
+      if (data != null) 
+        this.write(data, encoding);
+
       this.writable = false;
       this._endWrite = true;
+
       return this.flush();
     };
 
@@ -206,8 +241,9 @@
 
     BufferStream.prototype.flush = function () {
       var _this = this;
-      return process.nextTick(function () {
-        return _this._flush();
+
+      process.nextTick(function () {
+        _this._flush();
       });
     };
 
@@ -217,19 +253,19 @@
       this.writable = false;
       this.readable = false;
       if (!this._endRead) this.emit("close");
-      return this.cleanup();
+      this.cleanup();
     };
 
     BufferStream.prototype.destroySoon = function () {
       this.end();
       this._destroySoon = true;
-      return this.flush();
+      this.flush();
     };
 
     BufferStream.prototype.cleanup = function () {
       this.readIndex = 0;
       this.writeIndex = 0;
-      return this.buffer = null;
+      this.buffer = null;
     };
 
     return BufferStream;
