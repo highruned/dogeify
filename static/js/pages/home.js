@@ -10,11 +10,12 @@ jQuery(function($) {
         var secure = protocol === "https";
 
         // old code checked for SSL and used doge or doges, but I don't think we need to do that?
-        var newPath = protocol + '://' + host + ".dogeifyit.com" + port + path; //"http://" + (secure ? "doges." : "doge.") + host + ".dogeifyit.com" + port + path;
+        var newPath = protocol + '://' + host + "." + window.location.hostname + port + path; //"http://" + (secure ? "doges." : "doge.") + host + ".dogeifyit.com" + port + path;
 
         // first let our server know we're visiting this URL
         $.ajax({
-            url: $(this).attr('action'),
+            url: $(this).attr('action') + '?callback=?',
+            dataType: 'jsonp',
             success: function() {
                 window.location = newPath;
             }
