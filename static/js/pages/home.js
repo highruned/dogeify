@@ -1,7 +1,6 @@
 jQuery(function($) {
-    $('button').on('click', function(e) { 
-        e.preventDefault();
-        var val = $('input').val()
+    $('#destination-form').on('submit', function(e) { 
+        var val = $('input').val();
         
         var match = /^((((http)(s)?):)?\/\/)?([^\/:]*):?([0-9]*)(\/?.*)/.exec(val);
         var protocol = match[3] || "http";
@@ -10,24 +9,18 @@ jQuery(function($) {
         var path = match[8];
         var secure = protocol === "https";
 
-        var newPath = "http://" + (secure ? "doges." : "doge.") + host + ".dogeifyit.com" + port + path;
+        // old code checked for SSL and used doge or doges, but I don't think we need to do that?
+        var newPath = protocol + '://' + host + ".dogeifyit.com" + port + path; //"http://" + (secure ? "doges." : "doge.") + host + ".dogeifyit.com" + port + path;
 
-        window.location = newPath;
-    });
+        // first let our server know we're visiting this URL
+        $.ajax({
+            url: $(this).attr('action'),
+            success: function() {
+                window.location = newPath;
+            }
+        });
 
-    $('#destination').on('keydown', function(e) {    
-        var keycode;    
-
-        if (window.event) 
-            keycode = window.event.keyCode;   
-        else if (e) 
-            keycode = e.which;  
-        else 
-            return true; 
-
-        if(keycode == 13) {    
-            $('button').click();   
-        }
+        return false;
     });
 
     $('.top-sites a').click(function() {
@@ -39,7 +32,6 @@ jQuery(function($) {
 
         return false;
     });
-
 
     var params = Doge.helpers.getHashParameters();
 
