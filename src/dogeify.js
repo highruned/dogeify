@@ -149,12 +149,25 @@
     };
 
     app = Connect()
-      .use(Connect.static(__dirname + "/../static", {
-        maxAge: 24 * 60 * 60,
-        redirect: true
-      }))
+      .use(function(req, res, next) {
+          // if the request is for our top level domain, let's look for static files
+          if(req.headers['host'] === SERVER_SUFFIX_DOMAIN + (SERVER_EXTERNAL_PORT == 80 ? '' : ':' + SERVER_EXTERNAL_PORT)) {
+            Connect.static(__dirname + "/../static", {
+              maxAge: 24 * 60 * 60,
+              redirect: true
+            })(req, res, next);
+          }
+          // or if it's for our API
+          else if(req.headers['host'] === 'api.' + SERVER_SUFFIX_DOMAIN + (SERVER_EXTERNAL_PORT == 80 ? '' : ':' + SERVER_EXTERNAL_PORT)) {
+            api(req, res, next);
+          }
+          // otherwise let's continue proxying this shi-
+          else {
+            next();
+          }
+      })
       .use(Connect.logger(LOG_FORMAT))
-      //.use(stats)
+      .use(stats)
       .use(robots)
       .use(api)
       .use(blacklist(removeHost, BLACKLIST, BLACKLIST_CONTENT))
