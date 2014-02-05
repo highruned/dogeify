@@ -154,7 +154,7 @@
         redirect: true
       }))
       .use(Connect.logger(LOG_FORMAT))
-      .use(stats)
+      //.use(stats)
       .use(robots)
       .use(api)
       .use(blacklist(removeHost, BLACKLIST, BLACKLIST_CONTENT))
