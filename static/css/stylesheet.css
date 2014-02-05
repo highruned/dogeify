@@ -3282,40 +3282,45 @@ body {
   border-color: #000;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\0000375}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\0000376}}
+.much-blog a {
+  line-height: 25px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\0000381}}
 .explain {
   text-align: center;
   font-size: 1.25em;
   margin-bottom: 1em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\0000382}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\0000388}}
 .btn-primary {
   white-space: nowrap;
   font-size: 30px;
   padding: 18px 20px 21px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\0000388}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\0000394}}
 .extras {
   padding: 50px 0 0 0;
   border-top: dashed 2px #d7dcdd;
   margin: 30px 0 30px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\0000393}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\0000399}}
 .extras .notice > span {
   background: #eee;
   border: 1px solid #333333;
   padding: 0px 3px 1px;
   letter-spacing: 1px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003100}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003106}}
 .extras .notice > a {
   margin: 3px 0;
   display: block;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003106}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003112}}
 #doge-address {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -3328,22 +3333,22 @@ body {
   margin-top: 10px !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003116}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003122}}
 .x-hide {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003120}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003126}}
 .unfloat {
   float: none !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003124}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003130}}
 .center {
   margin: 0 auto !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003128}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003134}}
 #claim-form {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -3355,26 +3360,26 @@ body {
   border: 2px dashed #cccccc;
   background: #fff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003137}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003143}}
 #claim-form .steps {
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003140}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003146}}
 #claim-form .steps > li {
   list-style: none;
   padding: 25px 0 15px;
   border-top: 1px dashed #cccccc;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003146}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003152}}
 #claim-form .steps > li:first-child {
   padding-top: 0;
   border: 0 none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003152}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003158}}
 #claim-form .steps h3 {
   margin-bottom: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003157}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003163}}
 #claim-form .how {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -3385,7 +3390,7 @@ body {
   background: #eee;
   padding: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003165}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003171}}
 #claim-form .btn {
   background: #2e7bcc;
   color: #fff;
@@ -3394,11 +3399,11 @@ body {
   font-size: 20px;
   padding: 8px 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003173}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003179}}
 #claim-form .btn:hover {
   background: #15191a;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003178}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003184}}
 #claim-form .status-message {
   display: none;
   background: #96fee8;
@@ -3407,50 +3412,50 @@ body {
   color: #333;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003188}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003194}}
 .top-sites {
   margin: 10px 20px 40px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003191}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003197}}
 .top-sites ul {
   margin: 0 0 20px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003195}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003201}}
 .top-sites li {
   margin-bottom: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003199}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003205}}
 .top-sites ul, .top-sites li {
   list-style: none;
   font-weight: bold;
   line-height: 19px;
   font-size: 19px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003206}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003212}}
 .top-sites h3 {
   margin: 0 auto 0.5em auto;
   font-weight: bold;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003211}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003217}}
 .top-sites td.url a {
   font-weight: bold;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003216}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003222}}
 .top-doges {
   margin: 10px 20px 20px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003219}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003225}}
 .top-doges h3 {
   margin: 0 auto 0.5em auto;
   font-weight: bold;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003224}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003230}}
 .top-doges td.username a {
   font-weight: bold;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003229}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003235}}
 .notice {
   background: #96fee8;
   border: 2px dashed #4ddeff;
@@ -3458,59 +3463,63 @@ body {
   color: #333;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003236}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003242}}
 h2 {
   text-align: center;
   margin: 0 0 20px 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003241}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003247}}
 .well {
   padding: 20px 5%;
   text-align: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003245}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003251}}
 .well h3 {
   margin-bottom: 0.5em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003249}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003255}}
 .well .span6 {
   width: 48%;
   padding-right: 10%;
   float: left !important;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003255}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003261}}
 .well .span6 + .span6 {
   padding: 0 0 0 10%;
   border-left: dashed 2px #e99e00;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003266}}
+.well .span12 {
+  margin-left: 0;
+}
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003263}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003273}}
 .main-action .notice {
   display: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003266}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003276}}
 .main-action .notice > strong {
   color: #ba0925;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003272}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003282}}
 .control-group {
   margin: 0;
   padding: 0 0 10px 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003278}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003288}}
 .scope label {
   display: inline;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003282}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003292}}
 .scope input[type=radio] {
   display: inline-block;
   margin-left: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003288}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003298}}
 .disclaimer {
   color: #A4AFB5;
   font-size: 12px;
@@ -3519,56 +3528,56 @@ h2 {
   margin-top: 30px;
   text-align: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003296}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003306}}
 .disclaimer strong {
   color: #475860;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003300}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003310}}
 .disclaimer em {
   font-style: normal;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003305}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003315}}
 .well {
   border: 2px solid #ffaa42;
   background: #fee65e;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003310}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003320}}
 .extras .well ul {
   list-style-type: square;
   margin: 0 0 9px 17px;
   font-size: 14px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003315}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003325}}
 .extras .well ul a {
   padding: 2px;
   display: block;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003321}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003331}}
 #tip {
   padding: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003334}}
 #tip #doge-address {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003329}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003339}}
 .social-icons {
   margin: 0 auto;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003333}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003343}}
 .top-sites, .top-doges {
   background: #fff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003336}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003346}}
 .top-sites table, .top-doges table {
   border: 0 none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003340}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003350}}
 .top-sites h3, .top-doges h3 {
   background: #eee;
   margin: 0;
@@ -3578,75 +3587,75 @@ h2 {
 }
 
 @media only screen and (max-width: 960px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003351}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003361}}
   #wrapper {
     padding: 5px;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003355}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003365}}
   .extras > .span5, .extras > .span7 {
     margin-left: 0;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003359}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003369}}
   .top-sites, .top-doges {
     margin-right: 0;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003362}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003372}}
   .top-sites h3, .top-doges h3 {
     width: auto;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003367}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003377}}
   body {
     text-align: center;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003371}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003381}}
   .well {
     min-height: auto;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003374}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003384}}
   .well .span6, .well .span6 + .span6 {
     width: 100%;
     border-left-width: 0;
     padding: 10px 0;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003381}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003391}}
   .extras > .span5, .extras > .span7 {
     clear: both;
     width: 100%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003387}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003397}}
   .main-action > .span8 {
     clear: both;
     width: 100%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003393}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003403}}
   .going-places {
     width: 100%;
     min-width: 300px;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003397}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003407}}
   .going-places input[type=url] {
     display: block;
     width: 100%;
     float: none;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003403}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003413}}
   .going-places button {
     width: 100%;
     margin-left: 0;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003409}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003419}}
   .coin-dispenser {
     width: 100%;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003412}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/ude\/mi\/sites\/dogeify\.com\/www\/src\/scss\/pages\/_home\.scss}line{font-family:\00003422}}
   .coin-dispenser a {
     display: block;
   }

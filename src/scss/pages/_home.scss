@@ -72,6 +72,12 @@ body {
     }
 }
 
+.much-blog {
+    a {
+        line-height: 25px;
+    }
+}
+
 .explain {
     text-align: center;
     font-size: 1.25em;
@@ -255,6 +261,10 @@ h2 {
     .span6 + .span6 {
         padding: 0 0 0 10%;
         border-left: dashed 2px #E99E00;
+    }
+
+    .span12 {
+        margin-left: 0;
     }
 }
 
