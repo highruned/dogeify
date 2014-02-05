@@ -42,12 +42,12 @@
             - img (src)
       */
       if (el.name === 'img') {
-        if (!(el.attribs != null) || !el.attribs.src || (Math.random() > 10)) {
+        if (!(el.attribs != null) || !el.attribs.src) {
           return NO_TRANSFORM;
         }
 
-        var random = Math.random().toString().slice(2, 7);
         el.attribs.src = getDogeURL();
+        el.attribs.style = (el.attribs.style ? el.attribs.style + ';' : '') + 'height: 100%;';
 
         return outputTag(el);
       } 
