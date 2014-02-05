@@ -19,24 +19,36 @@
             - form (action)
     */
     if (el.name === 'a' || el.name === 'link') {
-      if (!(el.attribs != null) || !el.attribs.href) return NO_TRANSFORM;
+      if (!(el.attribs != null) || !el.attribs.href) 
+        return NO_TRANSFORM;
+
       el.attribs.href = addHost(el.attribs.href, {
         url: true
       });
+
       return outputTag(el);
-    } else if (el.name === 'img' || el.name === 'style' || el.name === 'script' || el.name === 'iframe') {
-      if (!(el.attribs != null) || !el.attribs.src) return NO_TRANSFORM;
+    } 
+    else if (el.name === 'img' || el.name === 'style' || el.name === 'script' || el.name === 'iframe') {
+      if (!(el.attribs != null) || !el.attribs.src) 
+        return NO_TRANSFORM;
+
       el.attribs.src = addHost(el.attribs.src, {
         url: true
       });
+
       return outputTag(el);
-    } else if (el.name === 'form') {
-      if (!(el.attribs != null) || !el.attribs.action) return NO_TRANSFORM;
+    } 
+    else if (el.name === 'form') {
+      if (!(el.attribs != null) || !el.attribs.action) 
+        return NO_TRANSFORM;
+
       el.attribs.action = addHost(el.attribs.action, {
         url: true
       });
+
       return outputTag(el);
-    } else {
+    } 
+    else {
       return NO_TRANSFORM;
     }
   };
@@ -48,40 +60,54 @@
         Rewrites response HTML's Urls, so they point a new Urls given by `addHost`
         argument.
     */
-    var transform;
-    transform = function (el) {
+    var transform = function (el) {
       return transformUrl(el, addHost);
     };
+
     return function (req, res, next) {
       var buffer, newRes, transformResponse, _ref2;
+
       _ref2 = captureResponse(res, function (statusCode, reason, headers) {
         return transformResponse(statusCode, reason, headers);
       }), buffer = _ref2[0], newRes = _ref2[1];
+
       buffer.pause();
+
       req.on("close", function () {
-        if (buffer) return buffer.destroy();
+        if (buffer) 
+          return buffer.destroy();
       });
+
       buffer.on("end", function () {
-        if (buffer) return buffer = null;
+        if (buffer) 
+          return buffer = null;
       });
+
       buffer.on("close", function () {
-        if (buffer) return buffer = null;
+        if (buffer) 
+          return buffer = null;
       });
+
       transformResponse = function (statusCode, reason, headers) {
         var ajax, html, jsonp, okay, rw;
+
         html = /html/.test(headers['content-type']);
         ajax = headers['x-requested-with'];
         jsonp = /callback=/i.test(req.url);
         okay = statusCode === 200;
+
         if (html && !ajax && !jsonp && okay) {
           rw = new Rewriter(transform);
           buffer.pipe(rw).pipe(newRes);
-        } else {
+        } 
+        else {
           buffer.pipe(newRes);
         }
+
         return buffer.resume();
       };
-      return next();
+
+      next();
     };
   };
 

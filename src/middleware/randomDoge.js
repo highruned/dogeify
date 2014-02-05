@@ -14,7 +14,7 @@
         Rewrites response HTML's Urls, so they point a new Urls given by `rewriteUrl`
         argument.
     */
-    var getKittyURL, doges, dogesRaw, doge, transform, _i, _len;
+    var getDogeURL, doges, dogesRaw, doge, transform, _i, _len;
     dogesRaw = FS.readFileSync(path, 'utf8').split("\n");
     doges = [];
     for (_i = 0, _len = dogesRaw.length; _i < _len; _i++) {
@@ -23,7 +23,7 @@
       doge = doge.replace(/\s+/g, "");
       if (doge) doges.push(doge);
     }
-    getKittyURL = function () {
+    getDogeURL = function () {
       var index;
       index = Math.floor(Math.random() * doges.length);
       return doges[index];
@@ -41,7 +41,7 @@
           return NO_TRANSFORM;
         }
         random = Math.random().toString().slice(2, 7);
-        el.attribs.src = getKittyURL();
+        el.attribs.src = getDogeURL();
         return outputTag(el);
       } else {
         return NO_TRANSFORM;
