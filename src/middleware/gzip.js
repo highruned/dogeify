@@ -37,7 +37,7 @@
 
     transformResponse = function(statusCode, reason, headers) {
       var unzip;
-      
+
       if (encoding !== ContentEncoding.IDENTITY) {
         if (encoding === ContentEncoding.GZIP) {
           unzip = zlib.createGunzip();
@@ -48,7 +48,7 @@
 
         buffer.pipe(unzip).pipe(newRes);
 
-        unzip.on("error", function() {
+        unzip.on('error', function() {
           console.log("Problem decoding compressed stream.");
           return newRes.end();
         });

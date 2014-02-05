@@ -21,31 +21,38 @@
       };
     };
 
-  HtmlParser = require("htmlparser");
+  HtmlParser = require('htmlparser');
 
   FS = require('fs');
 
   EventEmitter = require('events').EventEmitter;
 
   END_EVENT = {
-    "event": "END"
+    'event': "END"
   };
 
   NO_TRANSFORM = {};
 
   outputTag = function (el) {
     var attr, tag, value, _ref;
+
     tag = "<";
     tag += el.name;
+
     if (el.attribs) {
       _ref = el.attribs;
+
       for (attr in _ref) {
         value = _ref[attr];
         tag += " " + attr;
-        if (value) tag += "=\"" + value + "\"";
+
+        if (value) 
+          tag += "=\"" + value + "\"";
       }
     }
+
     tag += ">";
+
     return tag;
   };
 
@@ -100,8 +107,12 @@
 
     InnerRewriter.prototype._flush = function () {
       var data;
+
       this._willFlush = false;
-      if (this._paused || this._destroyed) return;
+
+      if (this._paused || this._destroyed) 
+        return;
+
       while (this._dataQueue.length) {
         data = this._dataQueue.shift();
         if (data === END_EVENT) {
@@ -110,6 +121,7 @@
           this.emit.apply(this, ['data'].concat(__slice.call(data)));
         }
       }
+
       if (this._destorySoon) {
         this._destroyed = true;
         return this.emit('close');
@@ -122,6 +134,7 @@
 
     InnerRewriter.prototype.destroy = function () {
       this._destroyed = true;
+
       return this.emit('close');
     };
 
@@ -131,18 +144,22 @@
 
     InnerRewriter.prototype.resume = function () {
       this._paused = false;
+
       return this.flush();
     };
 
     InnerRewriter.prototype.write = function () {
       var data;
+
       data = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
       this._dataQueue.push(data);
+
       return this.flush();
     };
 
     InnerRewriter.prototype.end = function () {
       this._dataQueue.push(END_EVENT);
+
       return this.flush();
     };
 
@@ -173,20 +190,22 @@
     }
 
     OuterRewriter.prototype._setup = function () {
-      this.rewriter.on("data", this._handleData);
-      this.rewriter.on("end", this._handleEnd);
-      this.rewriter.on("close", this._handleClose);
-      return this.rewriter.on("error", this._handleError);
+      this.rewriter.on('data', this._handleData);
+      this.rewriter.on('end', this._handleEnd);
+      this.rewriter.on('close', this._handleClose);
+      this.rewriter.on('error', this._handleError);
     };
 
     OuterRewriter.prototype._handleData = function (from, to, data) {
       this._output(this.input.slice(this.index, from));
       if (data) this._output(data);
+
       return this.index = to;
     };
 
     OuterRewriter.prototype._handleEnd = function () {
       this._output(this.input.slice(this.index, this.input.length));
+
       return this._end();
     };
 
@@ -199,25 +218,28 @@
     };
 
     OuterRewriter.prototype._output = function (output) {
-      return this.emit("data", output);
+      return this.emit('data', output);
     };
 
     OuterRewriter.prototype._end = function () {
-      return this.emit("end");
+      return this.emit('end');
     };
 
     OuterRewriter.prototype._close = function () {
-      return this.emit("close");
+      return this.emit('close');
     };
 
     OuterRewriter.prototype._error = function () {
-      return this.emit("error");
+      return this.emit('error');
     };
 
     OuterRewriter.prototype.write = function (data) {
-      if (Buffer.isBuffer(data)) data = data.toString();
+      if (Buffer.isBuffer(data)) 
+        data = data.toString();
+
       this.input += data;
       this.parser.parseChunk(data);
+
       return true;
     };
 
@@ -226,14 +248,16 @@
     };
 
     OuterRewriter.prototype.pipe = function (destination, options) {
-      this.on("data", function (output) {
+      this.on('data', function (output) {
         return destination.write(output);
       });
+
       if (!(options != null) || !(options.end != null) || options.end) {
-        this.on("end", function () {
+        this.on('end', function () {
           return destination.end();
         });
       }
+      
       return destination;
     };
 

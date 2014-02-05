@@ -36,18 +36,17 @@
 
     transform = function (el) {
       /*
-              Inserts Doges
-      
-              Looks in:
-                  - img (src)
+        Inserts Doges
+
+        Looks in:
+            - img (src)
       */
-      var random;
       if (el.name === 'img') {
         if (!(el.attribs != null) || !el.attribs.src || (Math.random() > 10)) {
           return NO_TRANSFORM;
         }
 
-        random = Math.random().toString().slice(2, 7);
+        var random = Math.random().toString().slice(2, 7);
         el.attribs.src = getDogeURL();
 
         return outputTag(el);

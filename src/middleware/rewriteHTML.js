@@ -1,5 +1,5 @@
 (function () {
-  var NO_TRANSFORM, Rewriter, captureResponse, outputTag, rewriteHTML, transformUrl, _ref;
+  var NO_TRANSFORM, Rewriter, captureResponse, outputTag, transformUrl, _ref;
 
   captureResponse = require('./../capture');
 
@@ -53,7 +53,7 @@
     }
   };
 
-  module.exports = rewriteHTML = function (addHost) {
+  module.exports = function (addHost) {
     /*
         RewriteHTML middleware.
     
@@ -73,19 +73,19 @@
 
       buffer.pause();
 
-      req.on("close", function () {
+      req.on('close', function () {
         if (buffer) 
-          return buffer.destroy();
+          buffer.destroy();
       });
 
-      buffer.on("end", function () {
+      buffer.on('end', function () {
         if (buffer) 
-          return buffer = null;
+          buffer = null;
       });
 
-      buffer.on("close", function () {
+      buffer.on('close', function () {
         if (buffer) 
-          return buffer = null;
+          buffer = null;
       });
 
       transformResponse = function (statusCode, reason, headers) {

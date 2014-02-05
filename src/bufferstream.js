@@ -198,7 +198,7 @@
     BufferStream.prototype._emitEnd = function () {
       this.readable = false;
       this._endRead = true;
-      this.emit("end");
+      this.emit('end');
       this.destroy();
     };
 
@@ -252,7 +252,7 @@
       this._destroyed = true;
       this.writable = false;
       this.readable = false;
-      if (!this._endRead) this.emit("close");
+      if (!this._endRead) this.emit('close');
       this.cleanup();
     };
 

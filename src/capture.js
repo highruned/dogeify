@@ -73,10 +73,10 @@
         return res.removeListener.apply(res, arguments);
       },
       destroy: function () {
-        return this.emit("close");
+        return this.emit('close');
       }
     };
-    
+
     return [buffer, newRes];
   };
 

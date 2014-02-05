@@ -31,8 +31,9 @@
 
       clientRes.on('end', function (data) {
         res.end(data);
+
         if (clientRes.trailers) 
-          return res.addTrailers(clientRes.trailers);
+          res.addTrailers(clientRes.trailers);
       });
     });
 
