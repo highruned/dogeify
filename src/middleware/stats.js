@@ -125,7 +125,7 @@
         inFlight -= 1;
         flying = false;
       }
-console.log('logging');
+
       loghit(Date.now() - time, length);
 
       end.call(res, chunk, encoding);

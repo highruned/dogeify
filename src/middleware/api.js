@@ -29,7 +29,9 @@
     routes: {
       get: {
         go: function(req, res, next) {
-          var data = JSON.stringify({a: '44'});
+          // insert request into database
+
+          var data = JSON.stringify({message: 'Success'});
 
           var queryData = url.parse(req.url, true).query;
           var content = queryData.callback + '(' + data + ')';
