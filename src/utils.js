@@ -1,5 +1,5 @@
 (function () {
-  var DEBUG, Url, getHostUtilities, __;
+  var DEBUG, Url, __;
 
   Url = require('url');
 
@@ -20,7 +20,7 @@
           If we should prended the protocol prefix.
   */
 
-  exports.getHostUtilities = getHostUtilities = function (domain, port, prefix) {
+  exports.getHostUtilities = function (domain, port, prefix) {
     var HOST_REGEX, addHost, isHostSecure, removeHost;
 
     if (port == null) port = 80;
@@ -67,7 +67,7 @@
     removeHost = function (url, options) {
       var host, removeHostFromHost, secure, urlobj, _ref, _ref2;
       if (options == null) options = {};
-console.log('e', url, options, HOST_REGEX);
+
       options = __.defaults(options, {
         port: true,
         prefix: true,
@@ -76,7 +76,7 @@ console.log('e', url, options, HOST_REGEX);
 
       removeHostFromHost = function (host) {
         var match = host.match(HOST_REGEX);
-console.log('f', host, match);
+
         if (match) {
           return {
             host: match[1],
@@ -111,7 +111,13 @@ console.log('f', host, match);
       return false;
     };
 
-    return [addHost, removeHost, isHostSecure];
+    normalizeHost = function (host) {
+      var urlobj = Url.parse(host, false, true);
+
+      return urlobj.host.replace('www.', '');
+    };
+
+    return [addHost, removeHost, isHostSecure, normalizeHost];
   };
 
 }).call(this);

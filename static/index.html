@@ -51,7 +51,7 @@
 
                 <div class="coin-dispenser span8 unfloat">
                     <a href="#claim-form" class="btn btn-primary btn-large overlay-box-shadow js-toggle">Get Free Dogecoins</a>
-                    <form id="claim-form" class="x-hide" action="/api/claim-coins/twitter/verify" method="post" autocorrect="off" novalidate>
+                    <form id="claim-form" class="x-hide" action="" method="post" autocorrect="off" novalidate>
                         <ul class="steps">
                             <li>
                                 <h3><strong>step 1:</strong> share Dogeify on Twitter</h3>
@@ -59,26 +59,27 @@
                             </li>
                             <li>
                                 <h3><strong>step 2:</strong> input ur Twitter username</h3>
-                                <input id="twitterUsername" type="text" placeholder="ur @username" name="twitterUsername" value="" />
+                                <input id="twitterUsername" type="text" placeholder="ur @username" name="twitter_username" value="" />
                                 <p>somebooty refer u? (optonal)</p>
-                                <input id="referrer" type="text" placeholder="referrer @username" name="referrerUsername" value="" />
+                                <input id="referrer" type="text" placeholder="referrer @username" name="referrer_username" value="" />
                             </li>
                             <li>
                                 <h3><strong>step 3:</strong> input ur Dogecoin address</h3>
                                 <p class="how">doncha know how? u download <a href="http://dogecoin.com/">the Dogecoin wallet!</a></p>
-                                <input type="text" placeholder="ur dogecoin address" name="dogecoinAddress" value="" />
+                                <input type="text" placeholder="ur dogecoin address" name="dogecoin_address" value="" />
                             </li>
                             <li>
-                                <h3><strong>step 4:</strong> much profit</h3>
-                                <input type="submit" name="submit" value="Verify" class="btn" />
+                                <h3><strong>step 4:</strong> such profit</h3>
+                                <input type="submit" name="submit" value="Much Verify" class="btn" />
                                 <p class="status-message success">ur done. <a href="#top-doges">now try 2 beet the top doges!</a></p>
-                                <p class="status-message error">someting has gun wrong :( shibesad. much tears. wow.</p>
+                                <p class="status-message error">someting has g'un wrong :( shibesad. much tears. wow.</p>
                             </li>
                             <li>
                                 <h3><strong>optonal step 5:</strong> refer ur doges for more dogepoints</h3>
-                                <input id="referrerUrl" type="text" placeholder="ur referrer url" name="referrerUrl" value="" />
+                                <input id="referrerUrl" type="text" placeholder="ur referrer url" name="referrer_url" value="" />
                             </li>
                         </ul>
+                        <p class="notice overlay-box-shadow hide"></p>
                     </form>
                 </div>
             </div>
@@ -98,22 +99,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1</td>
-                                    <td class="url"><a href="http://www.ign.com:5000/">www.ign.com</a></td>
-                                    <td>very game.</td>
-                                    <td><a class="btn btn-go" href="http://www.ign.com:5000/">Go</a></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td class="url"><a href="http://www.cnn.com:5000/">www.cnn.com</a></td>
-                                    <td>wow news.</td>
-                                    <td><a class="btn btn-go" href="http://www.cnn.com:5000/">Go</a></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td class="url"><a href="http://www.bbc.com:5000/">www.bbc.com</a></td>
-                                    <td>such british.</td>
-                                    <td><a class="btn btn-go" href="http://www.bbc.com:5000/">Go</a></td>
+                                    <td colspan="4">Loading...</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -132,12 +118,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1</td>
-                                    <td class="username"><a href="http://twitter.com/ericmuyser">@ericmuyser</a></td>
-                                    <td>
-                                        5 points (tweeted + 4 referred)
-                                    </td>
-                                    <td><a class="btn btn-go" href="http://twitter.com/ericmuyser" target="_blank">Stalk</a></td>
+                                    <td colspan="4">Loading...</td>
                                 </tr>
                             </tbody>
                         </table>
