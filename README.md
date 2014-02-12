@@ -49,6 +49,37 @@ Default: "cat" (which means cat.* == http, cats.* == https).
 : Connect Middleware style log format
 Default: ':method :status :response-time \t:req[Host]:url :user-agent'
 
+Setup
+--------------
+
+You will need PostgreSQL installed. Additionally, run this in your terminal:
+`createuser -P -e postgres`
+
+Run these in your Postgres console:
+GRANT ALL PRIVILEGES ON DATABASE "dogeify" to dogeify;
+GRANT ALL PRIVILEGES ON TABLE "sites" TO dogeify;
+GRANT ALL PRIVILEGES ON TABLE "users" TO dogeify;
+GRANT ALL PRIVILEGES ON TABLE "payments" TO dogeify;
+
+CREATE FUNCTION update_changetimestamp_column()
+RETURNS TRIGGER AS $$
+BEGIN
+   NEW.updated_at = now(); 
+   RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+CREATE TRIGGER update_ab_changetimestamp BEFORE UPDATE
+ON payments FOR EACH ROW EXECUTE PROCEDURE 
+update_changetimestamp_column();
+
+Notes
+--------------
+Major changes compared to Meowbify:
+* Removed coffee from our diet (removed CoffeeScript)
+* Removed sub-domain requirement.
+* Added API, database, blockchain components.
+* Re-designed the landing page and cut down on the CSS dependency.
 
 Special Thanks
 --------------
