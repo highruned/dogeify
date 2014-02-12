@@ -135,7 +135,11 @@
   setupInjector = function () {
     var addHost, app, isHostSecure, isSecure, removeHost, _ref;
 
-    _ref = getHostUtilities(SERVER_SUFFIX_DOMAIN, SERVER_EXTERNAL_PORT, SERVER_PREFIX), addHost = _ref[0], removeHost = _ref[1], isHostSecure = _ref[2];
+    _ref = getHostUtilities(SERVER_SUFFIX_DOMAIN, SERVER_EXTERNAL_PORT, SERVER_PREFIX), 
+    addHost = _ref[0], 
+    removeHost = _ref[1], 
+    isHostSecure = _ref[2],
+    normalizeHost = _ref[3]; // TODO: simply this
     
     isSecure = function (req, res, next) {
       if (isHostSecure(req.headers['host'])) {
@@ -150,6 +154,7 @@
 
     app = Connect()
       .use(function(req, res, next) {
+
           // if the request is for our top level domain, let's look for static files
           if(req.headers['host'] === SERVER_SUFFIX_DOMAIN + (SERVER_EXTERNAL_PORT == 80 ? '' : ':' + SERVER_EXTERNAL_PORT)) {
             Connect.static(__dirname + "/../static", {
