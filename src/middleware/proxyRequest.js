@@ -3,6 +3,8 @@
     https = require('https');
 
   module.exports = function (req, res) {
+    res.disableCache = true;
+    
     var options = {
       host: req.headers['host'],
       path: req.url,

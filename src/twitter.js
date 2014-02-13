@@ -31,8 +31,16 @@ module.exports = {
 				return;
 			}
 
-			user.followers_count = parseInt(/Followers<strong title=\"([^\"]+)\"/gi.exec(body)[1]);
-			user.statuses_count = parseInt(/Tweets<strong title=\"([^\"]+)\"/gi.exec(body)[1]);
+            var followers = /Followers<strong title=\"([^\"]+)\"/gi.exec(body);
+            var statuses = /Tweets<strong title=\"([^\"]+)\"/gi.exec(body);
+
+            if(!followers || !statuses) {
+                callback && callback("Problem occurred getting the timeline for: " + username);
+                return;
+            }
+
+			user.followers_count = parseInt(followers[1]);
+			user.statuses_count = parseInt(statuses[1]);
 
 			if(body.indexOf("hasn't tweeted yet") !== -1) {
 

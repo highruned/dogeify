@@ -23,6 +23,8 @@
 
   robots = require('./middleware/robots');
 
+  var memcache = require('./middleware/memcache');
+
   insertGA = require('./middleware/insertGA');
 
   blacklist = require('./middleware/blacklist');
@@ -154,7 +156,6 @@
 
     app = Connect()
       .use(function(req, res, next) {
-
           // if the request is for our top level domain, let's look for static files
           if(req.headers['host'] === SERVER_SUFFIX_DOMAIN + (SERVER_EXTERNAL_PORT == 80 ? '' : ':' + SERVER_EXTERNAL_PORT)) {
             Connect.static(__dirname + "/../static", {
@@ -164,6 +165,7 @@
           }
           // or if it's for our API
           else if(req.headers['host'] === 'api.' + SERVER_SUFFIX_DOMAIN + (SERVER_EXTERNAL_PORT == 80 ? '' : ':' + SERVER_EXTERNAL_PORT)) {
+            memcache(req, res, next);
             api(req, res, next);
           }
           // otherwise let's continue proxying this shi-
@@ -171,6 +173,7 @@
             next();
           }
       })
+      .use(memcache)
       .use(Connect.logger(LOG_FORMAT))
       .use(stats)
       .use(robots)

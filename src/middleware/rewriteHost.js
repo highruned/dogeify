@@ -66,7 +66,7 @@
           });
         }
       }
-console.log(headers);
+
       if ('access-control-allow-origin' in headers) {
         access_control_allow_origin = headers['access-control-allow-origin'].trim();
 

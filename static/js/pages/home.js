@@ -1,4 +1,8 @@
 jQuery(function($) {
+    window.goDestination_callback = function(res) {
+
+    };
+
     function initDestinationForm() {
         $('#destination-form').on('submit', function(e) { 
             var val = $('input').val();
@@ -11,15 +15,13 @@ jQuery(function($) {
             var secure = protocol === 'https';
 
             // old code checked for SSL and used doge or doges, but I don't think we need to do that?
-            var site = protocol + '://' + host + '.' + window.location.hostname + port + path; 
+            var site = Doge.helpers.dogeifyHost(host); 
 
             // first let our server know we're visiting this URL
             $.ajax({
-                url: 'http://api.dogeifyit.com.local:5000/v1/go?site=' + site + '&callback=?',
+                url: 'http://api.dogeifyit.com.local:9000/v1/go?site=' + site + '&callback=?',
                 dataType: 'jsonp',
-                success: function() {
-                    //window.location = site;
-                }
+                jsonpCallback: 'goDestination_callback'
             });
 
             window.open(site);
@@ -27,6 +29,10 @@ jQuery(function($) {
             return false;
         });
     }
+
+    window.verifyClaim_callback = function(res) {
+        $('#claim-form .notice').html(res.message).show();
+    };
 
     function initReferrerFeature() {
         var params = Doge.helpers.getHashParameters();
@@ -45,86 +51,90 @@ jQuery(function($) {
             var data = $(this).serialize();
 
             $.ajax({
-                url: 'http://api.dogeifyit.com.local:5000/v1/verifyClaim?' + data + '&callback=?',
+                url: 'http://api.dogeifyit.com.local:9000/v1/verifyClaim?' + data + '&callback=?',
                 dataType: 'jsonp',
-                success: function(res) {
-                    $('#claim-form .notice').html(res.message).show();
-                }
+                jsonpCallback: 'verifyClaim_callback'
             });
 
             e.preventDefault();
         });
     }
 
-    function refreshTopSites() {
-        $.ajax({
-            url: 'http://api.dogeifyit.com.local:5000/v1/topSites?callback=?',
-            dataType: 'jsonp',
-            success: function(res) {
-                if(res.code != 10) {
-                    alert("An error occurred: " + res.message + "(" + res.code + ")");
-                    return;
-                }
+    window.refreshTopSites_callback = function(res) {
+        if(res.code != 10) {
+            alert("An error occurred: " + res.message + "(" + res.code + ")");
+            return;
+        }
 
-                var sites = res.data;
-                var $table = $('.top-sites table');
+        var sites = res.data;
+        var $table = $('.top-sites table');
 
-                $table.find('tbody tr').remove();
+        $table.find('tbody tr').remove();
 
-                $(sites).each(function(i, site) {
-                    var $tr = $('<tr> \
-                                    <td>' + (i + 1) + '</td> \
-                                    <td class="url"><a href="' + Doge.helpers.dogeifyHost(site.url) + '">' + site.url + '</a></td> \
-                                    <td>' + site.comment + '</td> \
-                                    <td><a class="btn btn-go" href="' + Doge.helpers.dogeifyHost(site.url) + '">Go</a></td> \
-                                </tr>');
+        $(sites).each(function(i, site) {
+            var $tr = $('<tr> \
+                            <td>' + (i + 1) + '</td> \
+                            <td class="url"><a href="' + site.url + '">' + site.url + '</a></td> \
+                            <td>' + site.comment + '</td> \
+                            <td><a class="btn btn-go" href="' + site.url + '">Go</a></td> \
+                        </tr>');
 
-                    $table.find('tbody').append($tr);
-                });
-            }
+            $table.find('tbody').append($tr);
         });
-    }
 
-    function refreshTopUsers() {
-        $.ajax({
-            url: 'http://api.dogeifyit.com.local:5000/v1/topUsers?callback=?',
-            dataType: 'jsonp',
-            success: function(res) {
-                if(res.code != 10) {
-                    alert("An error occurred: " + res.message + "(" + res.code + ")");
-                    return;
-                }
-
-                var sites = res.data;
-                var $table = $('.top-doges table');
-
-                $table.find('tbody tr').remove();
-
-                $(sites).each(function(i, user) {
-                    var $tr = $('<tr> \
-                                    <td>' + (i + 1) + '</td> \
-                                    <td class="username"><a href="http://twitter.com/' + user.twitter_username + '">@' + user.twitter_username + '</a></td> \
-                                    <td>' + user.points + ' points (' + (user.has_tweeted ? 'tweeted + ' : '') + ' ' + user.refers + ' referred)</td> \
-                                    <td><a class="btn btn-go" href="http://twitter.com/' + user.twitter_username + '" target="_blank">Stalk</a></td> \
-                                </tr>');
-
-                    $table.find('tbody').append($tr);
-                });
-            }
-        });
-    }
-
-    function initTopSites() {
-        refreshTopSites();
-
-        $('.top-sites').on('a', 'click', function() {
+        $('.top-sites a').bind('click', function(e) {
             $('#destination')
                 .val($(this).attr('href'))
                 .focus();
 
             $(window).scroll($('#destination').offset().top);
 
-            return false;
+            e.preventDefault();
+        });
+    };
+
+    function refreshTopSites() {
+        $('.top-sites a').unbind('click');
+
+        $.ajax({
+            url: 'http://api.dogeifyit.com.local:9000/v1/topSites?callback=?',
+            dataType: 'jsonp',
+            jsonpCallback: 'refreshTopSites_callback'
+        });
+    }
+
+    function initTopSites() {
+        refreshTopSites();
+    }
+
+    window.refreshTopUsers_callback = function(res) {
+        if(res.code != 10) {
+            alert("An error occurred: " + res.message + "(" + res.code + ")");
+            return;
+        }
+
+        var sites = res.data;
+        var $table = $('.top-doges table');
+
+        $table.find('tbody tr').remove();
+
+        $(sites).each(function(i, user) {
+            var $tr = $('<tr> \
+                            <td>' + (i + 1) + '</td> \
+                            <td class="username"><a href="http://twitter.com/' + user.twitter_username + '">@' + user.twitter_username + '</a></td> \
+                            <td>' + user.points + ' points (' + (user.has_tweeted ? 'tweeted + ' : '') + ' ' + user.refers + ' referred)</td> \
+                            <td><a class="btn btn-go" href="http://twitter.com/' + user.twitter_username + '" target="_blank">Stalk</a></td> \
+                        </tr>');
+
+            $table.find('tbody').append($tr);
+        });
+    };
+
+    function refreshTopUsers() {
+        $.ajax({
+            url: 'http://api.dogeifyit.com.local:9000/v1/topUsers?callback=?',
+            dataType: 'jsonp',
+            jsonpCallback: 'refreshTopUsers_callback'
         });
     }
 

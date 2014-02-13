@@ -72,6 +72,8 @@
     routes: {
       get: {
         go: function(req, res, next) {
+          res.disableCache = true;
+
           var queryData = url.parse(req.url, true).query;
 
           // normalize the site URL
@@ -116,6 +118,8 @@
           });
         },
         verifyClaim: function(req, res, next) {
+          res.disableCache = true;
+
           var queryData = url.parse(req.url, true).query;
           var twitterUsername = queryData['twitter_username'].replace('@', '');
 
@@ -156,7 +160,9 @@
                 var referrerUsername = queryData['referrer_username'].replace('@', '');
                 var amount = Math.floor((Math.random() * 10)+5);
 
-                db.query("INSERT INTO payments (user_id, type, address, amount) VALUES ($1::int, $2::text, $3::text, $4::int)", [ userId, 'DOGE', dogecoinAddress, amount ], function(err) {
+                db.query("INSERT INTO payments (user_id, type, address, amount) \
+                    SELECT $1::int, $2::text, $3::text, $4::int \
+                    WHERE NOT EXISTS (SELECT 1 FROM payments WHERE user_id = $1::int)", [ userId, 'DOGE', dogecoinAddress, amount ], function(err) {
                   if(err) {
                     console.error(err);
                     sendResponse(res, queryData.callback, ERROR_CODE, "Error");
@@ -167,8 +173,8 @@
 
                   // update referrer refers or insert referrer into database
                   db.query("UPDATE users SET refers = refers + 1 WHERE twitter_username = $1::text", [ referrerUsername ], function(err) {
-                    db.query("INSERT INTO users (twitter_username, refers) \
-                        SELECT $1::text, 1 \
+                    db.query("INSERT INTO users (twitter_username) \
+                        SELECT $1::text \
                         WHERE NOT EXISTS (SELECT 1 FROM users WHERE twitter_username = $1::text)", [ referrerUsername ], function(err) {
 
                       sendResponse(res, queryData.callback, SUCCESS_CODE, "Success");
@@ -186,7 +192,7 @@
   function processPayments() {
     console.log("Processing payments");
 
-    db.query("SELECT id, user_id, type, address, amount FROM payments WHERE status in($1::int, $2::int) AND updated_at < current_timestamp - interval '5 seconds' LIMIT 1", [ UNPROCESSED_STATUS, INVALID_PAYMENT_STATUS ], function(err, data) {
+    db.query("SELECT id, user_id, type, address, amount FROM payments WHERE status in($1::int, $2::int) AND (updated_at IS NULL OR updated_at < current_timestamp - interval '5 seconds') LIMIT 1", [ UNPROCESSED_STATUS, INVALID_PAYMENT_STATUS ], function(err, data) {
       if(err) {
         console.error(err);
         setTimeout(processPayments, 1 * 1000); // go again
@@ -262,7 +268,7 @@
               return;
             }
 
-            db.query("UPDATE payments SET transaction_hash = $1::text WHERE id = $2::int", [ data, payment.id ]);
+            db.query("UPDATE payments SET transaction_hash = $1::text WHERE id = $2::int", [ data.replace('"', ''), payment.id ]);
 
             // give credit to the referrer
             if(referrer) {
