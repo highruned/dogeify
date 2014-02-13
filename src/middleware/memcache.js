@@ -3,9 +3,6 @@ var Memcached = require('memcached');
 var memcached = new Memcached('localhost:11211');
 
 module.exports = function (req, res, next) {
-  if(res.disableCache)
-    return;
-  
   var parts = url.parse(req.url, true);
 
   //delete parts.query.callback; // we don't want to cache the random `callback` param appended by jQuery
@@ -25,28 +22,34 @@ module.exports = function (req, res, next) {
   var endOld = res.end;
 
   res.write = function() {
-    response += arguments[0];
-
+    if(!res.disableCache) {
+      response += arguments[0];
+    }
+    
     writeOld.apply(this, arguments);
   };
 
   res.end = function() {
-    if(typeof arguments[0] !== 'undefined')
-      response += arguments[0];
+    if(!res.disableCache) {
+      if(typeof arguments[0] !== 'undefined')
+        response += arguments[0];
+    }
 
     endOld.apply(this, arguments);
   };
 
   res.on('finish', function() {
-    var lifetime = 5 * 60; // 5 minutes
+    if(!res.disableCache) {
+      var lifetime = 5 * 60; // 5 minutes
 
-    memcached.set(key, response, lifetime, function(err, result) {
-      if(err) {
-        console.error(err);
-      }
+      memcached.set(key, response, lifetime, function(err, result) {
+        if(err) {
+          console.error(err);
+        }
 
-      console.dir(result);
-    });
+        console.dir(result);
+      });
+    }
   });
 
   next();
