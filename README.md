@@ -19,8 +19,6 @@ It also inserts Doge.
 The proxy is designed to run on a wildcard domain *.SUFFIX_DOMAIN, and everything
 are rewritten to match that domain.
 
-To support HTTP and HTTPS sites, we use a prefix usually doge.* or doges.*.
-
 It currently only supports sites running on ports :80 and :443.
 
 
@@ -41,10 +39,6 @@ Default: 80
 : Domain that is appended when rewritting links
 Default: 'dogeifyit.com'
 
-*PREFIX_SUBDOMAIN*
-: The subdomain that is prefix to mark http and https sites.
-Default: "cat" (which means cat.* == http, cats.* == https).
-
 *LOG_FORMAT*
 : Connect Middleware style log format
 Default: ':method :status :response-time \t:req[Host]:url :user-agent'
@@ -53,25 +47,27 @@ Setup
 --------------
 
 You will need PostgreSQL installed. Additionally, run this in your terminal:
-`createuser -P -e postgres`
+
+    createuser -P -e postgres
 
 Run these in your Postgres console:
-GRANT ALL PRIVILEGES ON DATABASE "dogeify" to dogeify;
-GRANT ALL PRIVILEGES ON TABLE "sites" TO dogeify;
-GRANT ALL PRIVILEGES ON TABLE "users" TO dogeify;
-GRANT ALL PRIVILEGES ON TABLE "payments" TO dogeify;
 
-CREATE FUNCTION update_changetimestamp_column()
-RETURNS TRIGGER AS $$
-BEGIN
-   NEW.updated_at = now(); 
-   RETURN NEW;
-END;
-$$ language 'plpgsql';
+    GRANT ALL PRIVILEGES ON DATABASE "dogeify" to dogeify;
+    GRANT ALL PRIVILEGES ON TABLE "sites" TO dogeify;
+    GRANT ALL PRIVILEGES ON TABLE "users" TO dogeify;
+    GRANT ALL PRIVILEGES ON TABLE "payments" TO dogeify;
 
-CREATE TRIGGER update_ab_changetimestamp BEFORE UPDATE
-ON payments FOR EACH ROW EXECUTE PROCEDURE 
-update_changetimestamp_column();
+    CREATE FUNCTION update_changetimestamp_column()
+    RETURNS TRIGGER AS $$
+    BEGIN
+       NEW.updated_at = now(); 
+       RETURN NEW;
+    END;
+    $$ language 'plpgsql';
+
+    CREATE TRIGGER update_ab_changetimestamp BEFORE UPDATE
+    ON payments FOR EACH ROW EXECUTE PROCEDURE 
+    update_changetimestamp_column();
 
 Notes
 --------------
