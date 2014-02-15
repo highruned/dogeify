@@ -101,7 +101,7 @@ function initBackground() {
 			.html(getPhrase())
 			.css('left', getRandom(0, 80) + "%")
 			.css('top', getRandom(0, 80) + "%")
-			.appendTo('body')
+			.appendTo('#wrapper')
 			.fadeIn(200);
 	}
 

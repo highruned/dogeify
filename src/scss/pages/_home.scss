@@ -51,6 +51,10 @@ body {
 
 .social-icons {
     margin: 40px auto 0 !important;
+
+    > * {
+        display: inline !important;
+    }
 }
 
 .coin-dispenser {
@@ -334,10 +338,6 @@ h2 {
     #doge-address {
         display: none;
     }
-}
-
-.social-icons {
-    margin: 0 auto;
 }
 
 .top-sites, .top-doges {

@@ -1,15 +1,13 @@
 html.t-default {
 	#wrapper {
-		position: absolute;
-		z-index: 1;
-		top: 0;
+        position: relative;
+        width: 100%;
+        overflow-x: hidden;
 	}
 
 	body {
 		background: url(../i/doge-a-boo.png) no-repeat -50px -122px;
 		background-size: 300px auto;
-
-		overflow-x: hidden;
 	}
 
 	&.x--woah body {
