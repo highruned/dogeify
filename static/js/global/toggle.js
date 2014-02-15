@@ -11,6 +11,8 @@ jQuery(function($) {
 			$('html').addClass('x--woah');
 
 			$target.slideDown(150);
+
+            $target[0].scrollIntoView(true);
 		}
 
 		return false;
