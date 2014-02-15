@@ -72,10 +72,13 @@ jQuery(function($) {
         $table.find('tbody tr').remove();
 
         $(sites).each(function(i, site) {
+            var title = site.url.length > 10 ? site.url.substring(0, 7) + '...' : site.url;
+            var comment = site.comment && site.comment.length > 10 ? site.comment.substring(0, 7) + '...' : (site.comment ? site.comment : '');
+
             var $tr = $('<tr> \
                             <td>' + (i + 1) + '</td> \
-                            <td class="url"><a href="' + site.url + '">' + site.url + '</a></td> \
-                            <td>' + (site.comment ? site.comment : '') + '</td> \
+                            <td class="url"><a href="' + site.url + '">' + title + '</a></td> \
+                            <td>' + comment + '</td> \
                             <td><a class="btn btn-go" href="' + site.url + '">Go</a></td> \
                         </tr>');
 
@@ -119,10 +122,12 @@ jQuery(function($) {
         $table.find('tbody tr').remove();
 
         $(sites).each(function(i, user) {
+            var username = user.twitter_username.length > 10 ? user.twitter_username.substring(0, 7) + '...' : user.twitter_username;
+
             var $tr = $('<tr> \
                             <td>' + (i + 1) + '</td> \
-                            <td class="username"><a href="http://twitter.com/' + user.twitter_username + '">@' + user.twitter_username + '</a></td> \
-                            <td>' + user.points + ' points (' + (user.has_tweeted ? 'tweeted + ' : '') + ' ' + user.refers + ' referred)</td> \
+                            <td class="username"><a href="http://twitter.com/' + user.twitter_username + '">@' + username + '</a></td> \
+                            <td>' + user.points + ' points <br />' + (user.has_tweeted ? '(tweeted) and<br />' : '') + ' (' + user.refers + ' referred)</td> \
                             <td><a class="btn btn-go" href="http://twitter.com/' + user.twitter_username + '" target="_blank">Stalk</a></td> \
                         </tr>');
 
