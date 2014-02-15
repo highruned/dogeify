@@ -7,6 +7,12 @@
 
   _ref = require('./../rewrite'), Rewriter = _ref.Rewriter, NO_TRANSFORM = _ref.NO_TRANSFORM, outputTag = _ref.outputTag;
 
+  var SERVER_PORT = process.env.PORT || 5000;
+  var SERVER_EXTERNAL_PORT = process.env.EXTERNAL_PORT || 80;
+  var SERVER_SUFFIX_DOMAIN = process.env.SUFFIX_DOMAIN || "dogeifyit.com";
+  var SERVER_PREFIX = process.env.PREFIX_SUBDOMAIN || "doge";
+  var SERVER_URI = SERVER_EXTERNAL_PORT == 80 ? SERVER_SUFFIX_DOMAIN : SERVER_SUFFIX_DOMAIN + ':' + SERVER_EXTERNAL_PORT;
+
   module.exports = function (path) {
     /*
         RewriteHTML middleware.
@@ -23,6 +29,7 @@
       doge = dogesRaw[_i];
       doge = doge.replace(/(#.*)/, "");
       doge = doge.replace(/\s+/g, "");
+      doge = doge.replace('{dogeifyUri}', SERVER_URI);
 
       if (doge) 
         doges.push(doge);

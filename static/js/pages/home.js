@@ -19,7 +19,7 @@ jQuery(function($) {
 
             // first let our server know we're visiting this URL
             $.ajax({
-                url: 'http://api.dogeifyit.com.local:9000/v1/go?site=' + site + '&callback=?',
+                url: Doge.api.endpoint + 'goDestination?site=' + site + '&callback=?',
                 dataType: 'jsonp',
                 jsonpCallback: 'goDestination_callback'
             });
@@ -44,14 +44,14 @@ jQuery(function($) {
         $('#twitterUsername').keyup(function() {
             var twitterUsername = $(this).val().replace('@', '');
 
-            $('#referrerUrl').val('http://dogeifyit.com/#referrer=' + twitterUsername);
+            $('#referrerUrl').val('http://' + Doge.uri + '/#referrer=' + twitterUsername);
         });
 
         $('#claim-form').submit(function(e) {
             var data = $(this).serialize();
 
             $.ajax({
-                url: 'http://api.dogeifyit.com.local:9000/v1/verifyClaim?' + data + '&callback=?',
+                url: Doge.api.endpoint + 'verifyClaim?' + data + '&callback=?',
                 dataType: 'jsonp',
                 jsonpCallback: 'verifyClaim_callback'
             });
@@ -75,7 +75,7 @@ jQuery(function($) {
             var $tr = $('<tr> \
                             <td>' + (i + 1) + '</td> \
                             <td class="url"><a href="' + site.url + '">' + site.url + '</a></td> \
-                            <td>' + site.comment + '</td> \
+                            <td>' + (site.comment ? site.comment : '') + '</td> \
                             <td><a class="btn btn-go" href="' + site.url + '">Go</a></td> \
                         </tr>');
 
@@ -97,7 +97,7 @@ jQuery(function($) {
         $('.top-sites a').unbind('click');
 
         $.ajax({
-            url: 'http://api.dogeifyit.com.local:9000/v1/topSites?callback=?',
+            url: Doge.api.endpoint + 'topSites?callback=?',
             dataType: 'jsonp',
             jsonpCallback: 'refreshTopSites_callback'
         });
@@ -132,7 +132,7 @@ jQuery(function($) {
 
     function refreshTopUsers() {
         $.ajax({
-            url: 'http://api.dogeifyit.com.local:9000/v1/topUsers?callback=?',
+            url: Doge.api.endpoint + 'topUsers?callback=?',
             dataType: 'jsonp',
             jsonpCallback: 'refreshTopUsers_callback'
         });

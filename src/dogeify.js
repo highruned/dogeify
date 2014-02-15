@@ -1,5 +1,5 @@
 (function () {
-  var BLACKLIST, BLACKLIST_CONTENT, Connect, FS, Http, DOGE_INDEX, LOG_FORMAT, SERVER_EXTERNAL_PORT, SERVER_PORT, SERVER_PREFIX, SERVER_SUFFIX_DOMAIN, Server, blacklist, getHostUtilities, gunZip, handler, insertGA, proxyRequest, randomDoge, rewriteHTML, rewriteHost, robots, setupInjector, setupStatic, staticApp, stats;
+  var BLACKLIST, BLACKLIST_CONTENT, Connect, FS, Http, DOGE_INDEX, LOG_FORMAT, Server, blacklist, getHostUtilities, gunZip, handler, insertGA, proxyRequest, randomDoge, rewriteHTML, rewriteHost, robots, setupInjector, setupStatic, staticApp, stats;
 
   Http = require('http');
 
@@ -118,15 +118,14 @@
   Default: ':method :status :response-time \t:req[Host]:url :user-agent'
   */
 
-  SERVER_PORT = process.env.PORT || 5000;
-
-  SERVER_EXTERNAL_PORT = process.env.EXTERNAL_PORT || 80;
-
-  SERVER_SUFFIX_DOMAIN = process.env.SUFFIX_DOMAIN || "dogeifyit.com";
+  var SERVER_PORT = process.env.PORT || 5000;
+  var SERVER_EXTERNAL_PORT = process.env.EXTERNAL_PORT || 80;
+  var SERVER_SUFFIX_DOMAIN = process.env.SUFFIX_DOMAIN || "dogeifyit.com";
+  var SERVER_PREFIX = process.env.PREFIX_SUBDOMAIN || "doge";
+  var SERVER_URI = SERVER_EXTERNAL_PORT == 80 ? SERVER_SUFFIX_DOMAIN : SERVER_SUFFIX_DOMAIN + ':' + SERVER_EXTERNAL_PORT;
 
   LOG_FORMAT = ':method :status :response-time \t:req[Host]:url :user-agent';
 
-  SERVER_PREFIX = process.env.PREFIX_SUBDOMAIN || "doge";
 
   DOGE_INDEX = "" + __dirname + "/../data/doges.txt";
 

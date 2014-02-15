@@ -31,12 +31,11 @@
 
   */
 
-  SERVER_PORT = process.env.PORT || 5000;
-
-  SERVER_EXTERNAL_PORT = process.env.EXTERNAL_PORT || 80;
-
-  SERVER_SUFFIX_DOMAIN = process.env.SUFFIX_DOMAIN || "dogeifyit.com";
-  SERVER_PREFIX = process.env.PREFIX_SUBDOMAIN || "doge";
+  var SERVER_PORT = process.env.PORT || 5000;
+  var SERVER_EXTERNAL_PORT = process.env.EXTERNAL_PORT || 80;
+  var SERVER_SUFFIX_DOMAIN = process.env.SUFFIX_DOMAIN || "dogeifyit.com";
+  var SERVER_PREFIX = process.env.PREFIX_SUBDOMAIN || "doge";
+  var SERVER_URI = SERVER_EXTERNAL_PORT == 80 ? SERVER_SUFFIX_DOMAIN : SERVER_SUFFIX_DOMAIN + ':' + SERVER_EXTERNAL_PORT;
 
   var getHostUtilities = require('../utils').getHostUtilities;
 
@@ -71,7 +70,7 @@
   var api = {
     routes: {
       get: {
-        go: function(req, res, next) {
+        goDestination: function(req, res, next) {
           res.disableCache = true;
 
           var queryData = url.parse(req.url, true).query;
@@ -89,6 +88,7 @@
             });
           });
         },
+
         topSites: function(req, res, next) {
           var queryData = url.parse(req.url, true).query;
 
@@ -103,6 +103,7 @@
             sendResponse(res, queryData.callback, SUCCESS_CODE, "Success", res2.rows);
           });
         },
+
         topUsers: function(req, res, next) {
           var queryData = url.parse(req.url, true).query;
 
@@ -117,6 +118,7 @@
             sendResponse(res, queryData.callback, SUCCESS_CODE, "Success", res2.rows);
           });
         },
+
         verifyClaim: function(req, res, next) {
           res.disableCache = true;
 

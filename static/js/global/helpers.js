@@ -14,5 +14,5 @@ Doge.helpers.getHashParameters = function() {
 };
 
 Doge.helpers.dogeifyHost = function (host) {
-    return 'http://' + host + '.dogeifyit.com.local:9000';
+    return 'http://' + host + '.' + Doge.uri;
 };
