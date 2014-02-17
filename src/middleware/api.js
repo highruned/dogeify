@@ -78,6 +78,12 @@
           // normalize the site URL
           var siteUrl = normalizeHost(removeHost(queryData['site']));
 
+          if(!siteUrl) {
+            console.log("Attempting to go to a blank destination");
+            sendResponse(res, queryData.callback, ERROR_CODE, "Error");
+            return;
+          }
+
           // insert request into database
           db.query("UPDATE sites SET searches = searches + 1 WHERE url = $1::text", [ siteUrl ], function(err) {
             db.query("INSERT INTO sites (url) \
@@ -124,6 +130,12 @@
 
           var queryData = url.parse(req.url, true).query;
           var twitterUsername = queryData['twitter_username'].replace('@', '');
+
+          if(!twitterUsername) {
+            console.log("Attempting to be nobody");
+            sendResponse(res, queryData.callback, ERROR_CODE, "Error");
+            return;
+          }
 
           db.query("INSERT INTO users (twitter_username) \
               SELECT $1::text \
@@ -173,13 +185,17 @@
 
                   sendResponse(res, queryData.callback, SUCCESS_CODE, 'wow! great success! dogecoin, you will haz it!');
 
-                  // update referrer refers or insert referrer into database
-                  db.query("UPDATE users SET refers = refers + 1 WHERE twitter_username = $1::text", [ referrerUsername ], function(err) {
-                    db.query("INSERT INTO users (twitter_username) \
-                        SELECT $1::text \
-                        WHERE NOT EXISTS (SELECT 1 FROM users WHERE twitter_username = $1::text)", [ referrerUsername ], function(err) {
+                  if(!referrerUsername) {
+                    return;
+                  }
 
-                      sendResponse(res, queryData.callback, SUCCESS_CODE, "Success");
+                  // update referrer refers or insert referrer into database
+                  db.query("INSERT INTO users (twitter_username) \
+                    SELECT $1::text \
+                    WHERE NOT EXISTS (SELECT 1 FROM users WHERE twitter_username = $1::text)", [ referrerUsername ], function(err) {
+
+                    db.query("UPDATE users SET refers = refers + 1 WHERE twitter_username = $1::text", [ referrerUsername ], function(err) {
+                      
                     });
                   });
                 });
@@ -213,12 +229,14 @@
       db.query('SELECT twitter_username FROM users WHERE id = $1::int', [ payment.user_id ], function(err, data) {
         if(err) {
           console.error(err);
+          db.query("UPDATE payments SET status = $1::int WHERE id = $2::int", [ INVALID_PAYMENT_STATUS, payment.id ]);
           setTimeout(processPayments, 1 * 1000); // go again
           return;
         }
 
         if(!data.rows.length) {
           console.log("Cannot find associated user for payment");
+          db.query("UPDATE payments SET status = $1::int WHERE id = $2::int", [ INVALID_PAYMENT_STATUS, payment.id ]);
           setTimeout(processPayments, 1 * 1000);
           return;
         }
