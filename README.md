@@ -71,7 +71,7 @@ Run these in your Postgres console:
 
 Here's the command I use to run it locally:
 
-    SUFFIX_DOMAIN=dogeifyit.com.local PORT=5000 EXTERNAL_PORT=9000 LOCAL_MODE=1 LIBRATO_AUTH=EMAIL:API_KEY DEBUG=1 node --debug src/dogeify.js
+    SUFFIX_DOMAIN=dogeifyit.com.local PORT=5000 EXTERNAL_PORT=9000 LIBRATO_AUTH=EMAIL:API_KEY DEBUG=1 node --debug src/dogeify.js
 
 Notes
 --------------
