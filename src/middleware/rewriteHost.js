@@ -13,7 +13,7 @@
     for (_i = 0, _len = HOST_HEADERS.length; _i < _len; _i++) {
       header = HOST_HEADERS[_i];
 
-      if (header in req.headers) {console.log('h', req.headers[header], req.secure);
+      if (header in req.headers) {
         req.headers[header] = removeHost(req.headers[header], {secure: req.secure});
       }
     }

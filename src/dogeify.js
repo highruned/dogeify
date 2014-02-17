@@ -156,7 +156,7 @@
     app = Connect()
       .use(function(req, res, next) {
           // if the request is for our top level domain, let's look for static files
-          if(req.headers['host'] === SERVER_SUFFIX_DOMAIN + (SERVER_EXTERNAL_PORT == 80 ? '' : ':' + SERVER_EXTERNAL_PORT)) {
+          if(req.headers['host'] === SERVER_URI) {
             Connect.static(__dirname + "/../static", {
               maxAge: 24 * 60 * 60,
               redirect: true

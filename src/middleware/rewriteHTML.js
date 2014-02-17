@@ -101,6 +101,12 @@
           buffer.pipe(rw).pipe(newRes);
         } 
         else {
+          if(!buffer) {
+            console.log("Trying to write a non-200 response to a closed pipe.");
+            console.log(headers);
+            return;
+          }
+
           buffer.pipe(newRes);
         }
 

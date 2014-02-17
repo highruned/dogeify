@@ -1,4 +1,6 @@
 (function () {
+  var DEBUG = process.env['DEBUG'];
+  
   var http = require('http'),
     https = require('https');
 
