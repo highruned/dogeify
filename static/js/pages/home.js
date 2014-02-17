@@ -84,11 +84,11 @@ jQuery(function($) {
 
         $(sites).each(function(i, site) {
             var title = site.url.length > 20 ? site.url.substring(0, 17) + '...' : site.url;
-            var comment = site.comment && site.comment.length > 10 ? site.comment.substring(0, 7) + '...' : (site.comment ? site.comment : '');
+            var comment = site.comment && site.comment.length > 20 ? site.comment.substring(0, 17) + '...' : (site.comment ? site.comment : '');
 
             var $tr = $('<tr> \
                             <td>' + (i + 1) + '</td> \
-                            <td class="url"><a href="' + site.url + '">' + title + '</a></td> \
+                            <td class="url"><a href="' + site.url + '">' + title + '</a>' + (comment ? '<br /><p>' + comment + '</p>' : '') + '</td> \
                             <td><a class="btn btn-go" href="' + site.url + '">Go</a></td> \
                         </tr>');
 
