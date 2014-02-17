@@ -160,7 +160,7 @@
 
                 var dogecoinAddress = queryData['dogecoin_address'];
                 var referrerUsername = queryData['referrer_username'].replace('@', '');
-                var amount = Math.floor((Math.random() * 10)+5);
+                var amount = Math.floor(Math.random() * 10)+5; // number between 5 and 10
 
                 db.query("INSERT INTO payments (user_id, type, address, amount) \
                     SELECT $1::int, $2::text, $3::text, $4::int \
@@ -271,6 +271,8 @@
             }
 
             db.query("UPDATE payments SET transaction_hash = $1::text WHERE id = $2::int", [ data.replace('"', ''), payment.id ]);
+
+            db.query("UPDATE users SET points = points + 1 WHERE id = $1::int", [ payment.user_id ]);
 
             // give credit to the referrer
             if(referrer) {
