@@ -1,9 +1,9 @@
 function initDogeGenerator() {
 	Doge.generator = {
-		phrasesOnLoad: 0,
-		phrasesPerPage: 5, // TODO: base this on the window size. one per 400x200?
-		phraseDelayMin: 300,
-		phraseDelayMax: 1000
+		phrasesOnLoad: 1,
+		phrasesPerPage: 15, // TODO: base this on the window size. one per 400x200?
+		phraseDelayMin: 400,
+		phraseDelayMax: 500
 	};
 
 	var params = Doge.helpers.getHashParameters();
