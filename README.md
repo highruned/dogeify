@@ -19,7 +19,7 @@ It also inserts Doge.
 The proxy is designed to run on a wildcard domain *.SUFFIX_DOMAIN, and everything
 are rewritten to match that domain.
 
-It currently only supports sites running on ports :80 and :443.
+It currently only supports HTTP sites (running on ports :80).
 
 
 Configuration
@@ -48,7 +48,7 @@ Setup
 
 You will need PostgreSQL installed. Additionally, run this in your terminal:
 
-    createuser -P -e postgres
+    createuser -P -e dogeify
 
 Run these in your Postgres console:
 
@@ -68,6 +68,10 @@ Run these in your Postgres console:
     CREATE TRIGGER update_ab_changetimestamp BEFORE UPDATE
     ON payments FOR EACH ROW EXECUTE PROCEDURE 
     update_changetimestamp_column();
+
+Here's the command I use to run it locally:
+
+    SUFFIX_DOMAIN=dogeifyit.com.local PORT=5000 EXTERNAL_PORT=9000 LOCAL_MODE=1 LIBRATO_AUTH=EMAIL:API_KEY DEBUG=1 node --debug src/dogeify.js
 
 Notes
 --------------
