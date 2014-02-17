@@ -2,7 +2,6 @@
 
 # Open a Pull Request, add your doge!
 
-http://{dogeifyUri}/i/doges/hi-1.jpg
 http://{dogeifyUri}/i/doges/happy-1.jpg
 http://{dogeifyUri}/i/doges/birthday-1.png
 http://{dogeifyUri}/i/doges/mmm-1.jpg
