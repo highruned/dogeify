@@ -99,7 +99,7 @@
           var queryData = url.parse(req.url, true).query;
 
           // insert request into database
-          db.query("SELECT url, searches, comment FROM sites ORDER BY searches DESC LIMIT 10", [], function(err, res2) {
+          db.query("SELECT url, searches, comment FROM sites ORDER BY searches DESC LIMIT 20", [], function(err, res2) {
             if(!res2) {
               console.error(err);
               sendResponse(res, queryData.callback, ERROR_CODE, "Error");
