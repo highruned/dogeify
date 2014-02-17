@@ -25,3 +25,4 @@ http://{dogeifyUri}/i/doges/intel-1.gif
 http://{dogeifyUri}/i/doges/crab-1.gif
 http://{dogeifyUri}/i/doges/snow-1.gif
 http://{dogeifyUri}/i/doges/dancing-1.gif
+http://{dogeifyUri}/i/doges/coins-1.jpg
