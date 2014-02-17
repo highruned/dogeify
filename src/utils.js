@@ -39,7 +39,16 @@
       });
 
       addHostToHost = function (host, secure) {
-        var newHost = host + "." + domain;
+        var newHost = '';
+
+        if (options.prefix && secure) {
+            newHost += prefix + "s.";
+        }
+        else if (options.prefix && !secure) {
+            newHost += "";
+        }
+
+        newHost += host + "." + domain;
 
         if (options.port && port !== 80) 
           newHost += ":" + port;
@@ -62,7 +71,7 @@
       }
     };
 
-    HOST_REGEX = new RegExp("^(.*)[.]" + domain + "(:\\d+)?", "i");
+    HOST_REGEX = new RegExp("^(" + prefix + "s\.)?(.*)[.]" + domain + "(:\\d+)?", "i");
 
     removeHost = function (url, options) {
       var host, removeHostFromHost, secure, urlobj, _ref, _ref2;
@@ -79,15 +88,19 @@
 
         if (match) {
           return {
-            host: match[1],
-            secure: false
+            host: match[2],
+            secure: match[1] === prefix + 's.' ? true : false
           };
         } 
         else {
-          if (DEBUG) 
+          if (DEBUG) {
             console.log("Error transforming host: " + host);
+          }
 
-          return host;
+          return {
+            host: host,
+            secure: false
+          };
         }
       };
 
@@ -108,7 +121,9 @@
     };
 
     isHostSecure = function (host) {
-      return false;
+      var match = host.match(HOST_REGEX);
+
+      return match && match[1] === prefix + 's.' ? true : false;
     };
 
     normalizeHost = function (host) {
