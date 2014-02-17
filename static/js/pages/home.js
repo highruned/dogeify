@@ -14,6 +14,12 @@ jQuery(function($) {
             var path = match[8];
             var secure = protocol === 'https';
 
+            // if(host === 'google.com') {
+            //     $('.going-places .notice').html("Sorry that one doesn't work ;)");
+
+            //     return false;
+            // }
+
             // old code checked for SSL and used doge or doges, but I don't think we need to do that?
             var site = Doge.helpers.dogeifyHost(host); 
 
@@ -31,7 +37,12 @@ jQuery(function($) {
     }
 
     window.verifyClaim_callback = function(res) {
-        $('#claim-form .notice').html(res.message).show();
+        var message = res.message;
+
+        if(res.code == 10)
+            message += ' <img src="http://dogeifyit.com/i/doges/coins-1.gif" style="width: 90%" />';
+
+        $('#claim-form .notice').html(message).show();
     };
 
     function initReferrerFeature() {
