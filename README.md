@@ -50,7 +50,7 @@ You will need PostgreSQL installed. Additionally, run this in your terminal:
 
     createuser -P -e dogeify
 
-Run these in your Postgres console:
+First, import `db.sql` into Postgres. Then, run these in your Postgres console:
 
     GRANT ALL PRIVILEGES ON DATABASE "dogeify" to dogeify;
     GRANT ALL PRIVILEGES ON TABLE "sites" TO dogeify;
