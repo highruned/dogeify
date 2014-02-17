@@ -1,8 +1,9 @@
 (function () {
   var DEBUG = process.env['DEBUG'];
-  
+
   var http = require('http'),
-    https = require('https');
+    https = require('https'),
+    FS = require('fs');
 
   module.exports = function (req, res) {
     res.disableCache = true;
@@ -46,6 +47,7 @@
       console.dir(err);
 
       res.writeHead(500, "Error connecting.", {});
+      res.write(FS.readFileSync("" + __dirname + "/../../static/500.html"));
       res.end();
     });
 
